@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Libs\Okta\Resources;
+namespace Okta\Resources;
 
 use GuzzleHttp\Client as GuzzleClient;
-use App\Libs\Okta\Request as OktaRequest;
+use Okta\Request as OktaRequest;
 
 abstract class Base
 {

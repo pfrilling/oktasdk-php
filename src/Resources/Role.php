@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libs\Okta\Resources;
+namespace Okta\Resources;
 
 class Role extends Base
 {

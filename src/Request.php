@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Libs\Okta;
+namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
-use App\Libs\Okta\Exception as OktaException;
+use Okta\Exception as OktaException;
 use Exception;
 
 /**

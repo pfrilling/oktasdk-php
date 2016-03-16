@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Libs\Okta;
+namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 
-use App\Libs\Okta\Resources\App;
-use App\Libs\Okta\Resources\Authentication;
-use App\Libs\Okta\Resources\Event;
-use App\Libs\Okta\Resources\Factor;
-use App\Libs\Okta\Resources\Group;
-use App\Libs\Okta\Resources\Role;
-use App\Libs\Okta\Resources\Schema;
-use App\Libs\Okta\Resources\Session;
-use App\Libs\Okta\Resources\User;
+use Okta\Resources\App;
+use Okta\Resources\Authentication;
+use Okta\Resources\Event;
+use Okta\Resources\Factor;
+use Okta\Resources\Group;
+use Okta\Resources\Role;
+use Okta\Resources\Schema;
+use Okta\Resources\Session;
+use Okta\Resources\User;
 
 /**
  * Okta\Client class

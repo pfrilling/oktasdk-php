@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libs\Okta\Resources;
+namespace Okta\Resources;
 
 class User extends Base
 {

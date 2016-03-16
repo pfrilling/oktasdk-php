@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libs\Okta;
+namespace Okta;
 
 /**
  * Okta\Exception class to pass through Okta responses
