@@ -29,7 +29,7 @@ Example Usage
 -------------
 
 ```php
-$userId = $okta->user->get('user_id');
+$user = $okta->user->get('user_id');
 ```
 
 
