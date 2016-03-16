@@ -18,7 +18,10 @@ Initializing the Client
 ```php
 use Okta\Client as OktaClient;
 
-$okta = new OktaClient('org_prefix', 'your_okta_api_key');
+$org = 'foo'; // Your organization's subdomain (tenant) prefix
+$apiKey = '2yXrPqciUlXtnmcCzrcCU2dh'; // Your Okta API key
+
+$okta = new OktaClient($org, $apiKey);
 ```
 
 
@@ -26,7 +29,7 @@ Example Usage
 -------------
 
 ```php
-$okta->user->get('user_id');
+$userId = $okta->user->get('user_id');
 ```
 
 
