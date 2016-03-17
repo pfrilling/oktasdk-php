@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Events resource:
+ * http://developer.okta.com/docs/api/resources/events.html
+ */
 class Event extends Base
 {
 

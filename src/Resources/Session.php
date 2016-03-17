@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Sessions resource:
+ * http://developer.okta.com/docs/api/resources/sessions.html
+ */
 class Session extends Base
 {
 

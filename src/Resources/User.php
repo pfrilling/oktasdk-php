@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Users resource:
+ * http://developer.okta.com/docs/api/resources/users.html
+ */
 class User extends Base
 {
 

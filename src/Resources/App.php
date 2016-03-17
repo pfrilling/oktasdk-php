@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Apps resource:
+ * http://developer.okta.com/docs/api/resources/apps.html
+ */
 class App extends Base
 {
 

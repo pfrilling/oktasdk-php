@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Schemas resource:
+ * http://developer.okta.com/docs/api/resources/schemas.html
+ */
 class Schema extends Base
 {
 

@@ -5,6 +5,9 @@ namespace Okta\Resources;
 use GuzzleHttp\Client as GuzzleClient;
 use Okta\Request as OktaRequest;
 
+/**
+ * Resource base class.  All resources should extend this class.
+ */
 abstract class Base
 {
 

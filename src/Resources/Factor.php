@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Factors (MFA) resource:
+ * http://developer.okta.com/docs/api/resources/factors.html
+ */
 class Factor extends Base
 {
 

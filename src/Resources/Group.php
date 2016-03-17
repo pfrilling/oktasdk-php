@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Groups resource:
+ * http://developer.okta.com/docs/api/resources/groups.html
+ */
 class Group extends Base
 {
 

@@ -2,6 +2,10 @@
 
 namespace Okta\Resources;
 
+/**
+ * Implementation of the Okta Roles resource:
+ * http://developer.okta.com/docs/api/resources/roles.html
+ */
 class Role extends Base
 {
 
