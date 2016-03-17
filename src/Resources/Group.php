@@ -3,7 +3,8 @@
 namespace Okta\Resources;
 
 /**
- * Implementation of the Okta Groups resource:
+ * Implementation of the Okta Groups resource, accessible via $oktaClient->group
+ *
  * http://developer.okta.com/docs/api/resources/groups.html
  */
 class Group extends Base

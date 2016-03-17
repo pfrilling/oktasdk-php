@@ -23,8 +23,19 @@ use Okta\Resources\User;
  */
 class Client {
 
-    protected $org     = null;
-    protected $key     = null;
+    /**
+     * @var string Okta org subdomain prefix
+     */
+    protected $org;
+
+    /**
+     * @var string Okta API key
+     */
+    protected $key;
+
+    /**
+     * @var array Array of client headers
+     */
     protected $headers = [];
 
     /**

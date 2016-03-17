@@ -15,12 +15,30 @@ use Exception;
 class Request
 {
 
-    protected $client = null;
+    /**
+     * @var object GuzzleHttp\Client instance
+     */
+    protected $client;
 
-    protected $method   = null;
-    protected $endpoint = null;
-    protected $options  = [];
-    protected $assoc    = false;
+    /**
+     * @var string Request HTTP method (GET|POST|PUT|DELETE)
+     */
+    protected $method;
+
+    /**
+     * @var string Request endpoint
+     */
+    protected $endpoint;
+
+    /**
+     * @var array Array of request options
+     */
+    protected $options = [];
+
+    /**
+     * @var boolean Wether or not to return associative arrays
+     */
+    protected $assoc = false;
 
     /**
      * Okta\Request contructor method
@@ -35,6 +53,7 @@ class Request
      * Set request method
      *
      * @param  string $method HTTP method (GET|POST|PUT|DELETE)
+     *
      * @return object         This request object
      */
     public function method($method) {
@@ -54,6 +73,7 @@ class Request
      *
      * @param  string $endpoint Request endpoint (absolute path or relative to
      *                          the base URI)
+     *
      * @return object           This request object
      */
     public function endpoint($endpoint) {
@@ -65,6 +85,7 @@ class Request
      * Convenience function for making an HTTP GET request
      *
      * @param  string $endpoint Request endpoint
+     *
      * @return object           OktaRequest object
      */
     public function get($endpoint) {
@@ -76,6 +97,7 @@ class Request
      * Convenience function for making an HTTP POST request
      *
      * @param  string $endpoint Request endpoint
+     *
      * @return object           OktaRequest object
      */
     public function post($endpoint) {
@@ -87,6 +109,7 @@ class Request
      * Convenience function for making an HTTP PUT request
      *
      * @param  string $endpoint Request endpoint
+     *
      * @return object           OktaRequest object
      */
     public function put($endpoint) {
@@ -110,6 +133,7 @@ class Request
      *
      * @param  string $key   Option key
      * @param  strgin $value Option value
+     *
      * @return object        This request object
      */
     public function option($key, $value) {
@@ -123,6 +147,7 @@ class Request
      * @param  array  $query    Associative array of query string values
      * @param  bool   $override If true override all currently stored query
      *                          values with the new values being provided
+     *
      * @return object           This request object
      */
     public function query(array $query, $override = false) {
@@ -142,10 +167,13 @@ class Request
      * a request. A Content-Type header of application/json will be added if no
      * Content-Type header is already present on the message.
      *
+     * Alias: $this->data()
+     *
      * @param  array  $data     Any PHP type that can be operated on by PHP's
      *                          json_encode() function.
      * @param  bool   $override If true override all currently stored json data
      *                          with the new data being provided
+     *
      * @return object           This request object
      */
     public function json(array $data, $override = false) {
@@ -162,10 +190,16 @@ class Request
 
     /**
      * Alias of $this->json()
+     *
+     * @param  array  $data     Any PHP type that can be operated on by PHP's
+     *                          json_encode() function.
+     * @param  bool   $override If true override all currently stored json data
+     *                          with the new data being provided
+     *
+     * @return object           This request object
      */
-    public function data(...$args) {
-        $this->json(...$args);
-        return $this;
+    public function data(array $data, $override = false) {
+        return $this->json($data, $override);
     }
 
     /**
@@ -173,6 +207,7 @@ class Request
      * indefinitely (the default behavior).
      *
      * @param  float  $seconds Seconds to wait before request times out
+     *
      * @return object          This request object
      */
     public function timeout($seconds) {
@@ -184,6 +219,7 @@ class Request
      * When true, returned objects will be converted into associative arrays.
      *
      * @param  bool   $assoc Wether or not to return associative arrays
+     *
      * @return object        This request object
      */
     public function assoc($assoc) {

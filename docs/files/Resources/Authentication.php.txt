@@ -3,7 +3,9 @@
 namespace Okta\Resources;
 
 /**
- * Implementation of the Okta Authentication resource:
+ * Implementation of the Okta Authentication resource, accessible via
+ * $oktaClient->auth
+ *
  * http://developer.okta.com/docs/api/resources/authn.html
  */
 class Authentication extends Base

@@ -3,7 +3,9 @@
 namespace Okta\Resources;
 
 /**
- * Implementation of the Okta Factors (MFA) resource:
+ * Implementation of the Okta Factors (MFA) resource, accessible via
+ * $oktaClient->factor
+ *
  * http://developer.okta.com/docs/api/resources/factors.html
  */
 class Factor extends Base
@@ -58,9 +60,13 @@ class Factor extends Base
 
     /**
      * Alias of $this->catalog()
+     *
+     * @param  string $uid User ID
+     *
+     * @return array       Array of enrollable factors
      */
-    public function listEnrollable(...$args) {
-        return $this->catalog(...$args);
+    public function listEnrollable($uid) {
+        return $this->catalog($uid);
     }
 
     /**
@@ -233,24 +239,6 @@ class Factor extends Base
     public function poll($uid, $fid, $tid) {
 
         $request = $this->request->get('users/' . $uid . '/factors/' . $fid . '/transactions/' . $tid);
-
-        return $request->send();
-
-    }
-
-    /**
-     * Update the profile of a specified factor
-     *
-     * @param  string $uid User ID
-     * @param  string $fid Factor ID
-     *
-     * @return object      Factor object?
-     */
-    public function profileUpdate($uid, $fid, $profile) {
-
-        $request = $this->request->post('users/' . $uid . '/factors/' . $fid)->data([
-            'profile' => $profile
-        ]);
 
         return $request->send();
 

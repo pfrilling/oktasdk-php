@@ -3,7 +3,8 @@
 namespace Okta\Resources;
 
 /**
- * Implementation of the Okta Apps resource:
+ * Implementation of the Okta Apps resource, accessible via $oktaClient->app
+ *
  * http://developer.okta.com/docs/api/resources/apps.html
  */
 class App extends Base

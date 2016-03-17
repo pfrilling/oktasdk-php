@@ -3,7 +3,8 @@
 namespace Okta\Resources;
 
 /**
- * Implementation of the Okta Users resource:
+ * Implementation of the Okta Users resource, accessible via $oktaClient->user
+ *
  * http://developer.okta.com/docs/api/resources/users.html
  */
 class User extends Base
@@ -125,13 +126,6 @@ class User extends Base
     }
 
     /**
-     * Alias of $this->apps()
-     */
-    public function getApps(...$args) {
-        return $this->apps(...$args);
-    }
-
-    /**
      * Fetches the groups of which the user is a member.
      *
      * @param  string $uid ID of user
@@ -144,13 +138,6 @@ class User extends Base
 
         return $request->send();
 
-    }
-
-    /**
-     * Alias of $this->groups()
-     */
-    public function getGroups(...$args) {
-        return $this->groups(...$args);
     }
 
     /**
@@ -362,13 +349,6 @@ class User extends Base
 
         return $request->send();
 
-    }
-
-    /**
-     * Alias for $this->forgotPassword()
-     */
-    public function sendPasswordRecoveryEmail(...$args) {
-        $this->forgotPassword(...$args);
     }
 
     /**

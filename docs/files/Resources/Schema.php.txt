@@ -3,7 +3,9 @@
 namespace Okta\Resources;
 
 /**
- * Implementation of the Okta Schemas resource:
+ * Implementation of the Okta Schemas resource, accessible via
+ * $oktaClient->schema
+ *
  * http://developer.okta.com/docs/api/resources/schemas.html
  */
 class Schema extends Base
