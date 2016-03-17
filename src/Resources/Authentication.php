@@ -16,10 +16,17 @@ class Authentication extends Base
      * determine if the user’s password is expired, a factor should be enrolled,
      * or additional verification is required.
      *
-     * @param  string $username User’s non-qualified short-name or unique
-     *                          fully-qualified login
-     * @param  string $password User’s password credential
-     * @return object           Authentication Transaction Object
+     * @param  string $username   User’s non-qualified short-name or unique
+     *                            fully-qualified login
+     * @param  string $password   User’s password credential
+     * @param  string $relayState Optional state value that is persisted for the
+     *                            lifetime of the authentication transaction
+     * @param  array  $options    Array of opt-in features for the
+     *                            authentication transaction
+     * @param  array  $context    Array of additional context properties for the
+     *                            authentication transaction
+     *
+     * @return object             Authentication Transaction Object
      */
     public function authn($username, $password, $relayState = null, $options = null, $context = null) {
 

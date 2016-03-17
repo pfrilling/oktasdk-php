@@ -11,17 +11,18 @@ use Okta\Request as OktaRequest;
 abstract class Base
 {
 
-    protected $request = null;
+    /**
+     * @var object Okta\Request object
+     */
+    protected $request;
 
     /**
      * Okta\Resources\Base constructor method
      *
-     * @param string $org     Your organization's subdomain (tenant)
-     * @param string $apiKey  Your Okta API key
-     * @param array  $headers Array of headers in header_name => value format
+     * @param object $request  Instance of GuzzleClient
      */
-    public function __construct(GuzzleClient $client) {
-        $this->request = new OktaRequest($client);
+    public function __construct(OktaRequest $request) {
+        $this->request = $request;
     }
 
 }

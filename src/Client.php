@@ -4,6 +4,8 @@ namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 
+use Okta\Request as OktaRequest;
+
 use Okta\Resources\App;
 use Okta\Resources\Authentication;
 use Okta\Resources\Event;
@@ -50,15 +52,15 @@ class Client {
             ], $this->headers)
         ]);
 
-        $this->app     = new App($client);
-        $this->auth    = new Authentication($client);
-        $this->event   = new Event($client);
-        $this->factor  = new Factor($client);
-        $this->group   = new Group($client);
-        $this->role    = new Role($client);
-        $this->schema  = new Schema($client);
-        $this->session = new Session($client);
-        $this->user    = new User($client);
+        $this->app     = new App(new OktaRequest($client));
+        $this->auth    = new Authentication(new OktaRequest($client));
+        $this->event   = new Event(new OktaRequest($client));
+        $this->factor  = new Factor(new OktaRequest($client));
+        $this->group   = new Group(new OktaRequest($client));
+        $this->role    = new Role(new OktaRequest($client));
+        $this->schema  = new Schema(new OktaRequest($client));
+        $this->session = new Session(new OktaRequest($client));
+        $this->user    = new User(new OktaRequest($client));
 
     }
 

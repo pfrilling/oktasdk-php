@@ -4,6 +4,7 @@ namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Okta\Exception as OktaException;
+
 use Exception;
 
 /**
@@ -24,9 +25,7 @@ class Request
     /**
      * Okta\Request contructor method
      *
-     * @param string $org     Your organization's subdomain (tenant)
-     * @param string $apiKey  Okta API key
-     * @param array  $headers Array of headers in header_name => value format
+     * @param object $client Instance of GuzzleHttp\Client
      */
     public function __construct(GuzzleClient $client) {
         $this->client = $client;
