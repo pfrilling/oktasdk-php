@@ -372,7 +372,7 @@ class User extends Base
      */
     public function changeRecoveryQuestion($uid, $password, $question, $answer) {
 
-        $reqeust = $this->request->post('users/' . $uid . '/credentials/change_recovery_question');
+        $request = $this->request->post('users/' . $uid . '/credentials/change_recovery_question');
 
         $request->data([
             'password' => [
