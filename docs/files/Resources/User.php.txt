@@ -141,19 +141,6 @@ class User extends Base
     }
 
     /**
-     * [getRoles description]
-     * @param  [type] $uid [description]
-     * @return [type]      [description]
-     */
-    public function getRoles($uid) {
-
-        $request = $this->request->get('users/' . $uid . '/roles');
-
-        return $request->send();
-
-    }
-
-    /**
      * Activates a user. This operation can only be performed on users with a
      * STAGED status. Activation of a user is an asynchronous operation. The
      * user will have the transitioningToStatus property with a value of ACTIVE
