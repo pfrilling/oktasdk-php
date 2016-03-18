@@ -3,6 +3,9 @@
     <files>
         <directory>src</directory>
     </files>
+    <parser>
+        <target>.phpdoc</target>
+    </parser>
     <transformer>
         <target>docs</target>
     </transformer>
