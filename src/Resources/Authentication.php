@@ -218,9 +218,9 @@ class Authentication extends Base
      */
     public function resendSmsChallenge($fid, $stateToken) {
 
-        $request = $this->request->post('authn/factors/' . $fid . '/verify/resend')->data([
-            'stateToken' => $stateToken
-        ]);
+        $request = $this->request->post('authn/factors/' . $fid . '/verify/resend');
+
+        $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
 
