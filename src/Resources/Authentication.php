@@ -203,7 +203,6 @@ class Authentication extends Base
     public function sendSmsChallenge($fid, $stateToken) {
 
         return $this->verifyFactor($fid, $stateToken, [
-            'fid'        => $fid,
             'stateToken' => $stateToken
         ]);
 
