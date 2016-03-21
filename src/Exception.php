@@ -10,6 +10,9 @@ namespace Okta;
 class Exception extends \Exception
 {
 
+    /**
+     * @var object The response object to handle
+     */
     private $responseObject;
 
     /**
@@ -72,7 +75,9 @@ class Exception extends \Exception
     /**
      * Return response error causes
      *
-     * @return array Array of error causes
+     * @param string        $key Specific key of error to fetch
+     *
+     * @return array|string      Array of error causes or specific error string
      */
     public function getErrorCauses($key = null) {
 
