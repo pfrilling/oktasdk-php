@@ -16,75 +16,75 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
     }
 
     public function testAppObject() {
-        $this->assertInstanceOf('Okta\Resources\App', $this->okta->app);
+        $this->assertInstanceOf('Okta\Resource\App', $this->okta->app);
     }
 
     public function testAppExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->app);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->app);
     }
 
     public function testAuthObject() {
-        $this->assertInstanceOf('Okta\Resources\Authentication', $this->okta->auth);
+        $this->assertInstanceOf('Okta\Resource\Authentication', $this->okta->auth);
     }
 
     public function testAuthExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->auth);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->auth);
     }
 
     public function testEventObject() {
-        $this->assertInstanceOf('Okta\Resources\Event', $this->okta->event);
+        $this->assertInstanceOf('Okta\Resource\Event', $this->okta->event);
     }
 
     public function testEventExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->event);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->event);
     }
 
     public function testFactorObject() {
-        $this->assertInstanceOf('Okta\Resources\Factor', $this->okta->factor);
+        $this->assertInstanceOf('Okta\Resource\Factor', $this->okta->factor);
     }
 
     public function testFactorExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->factor);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->factor);
     }
 
     public function testGroupObject() {
-        $this->assertInstanceOf('Okta\Resources\Group', $this->okta->group);
+        $this->assertInstanceOf('Okta\Resource\Group', $this->okta->group);
     }
 
     public function testGroupExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->group);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->group);
     }
 
     public function testRoleObject() {
-        $this->assertInstanceOf('Okta\Resources\Role', $this->okta->role);
+        $this->assertInstanceOf('Okta\Resource\Role', $this->okta->role);
     }
 
     public function testRoleExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->role);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->role);
     }
 
     public function testSchemaObject() {
-        $this->assertInstanceOf('Okta\Resources\Schema', $this->okta->schema);
+        $this->assertInstanceOf('Okta\Resource\Schema', $this->okta->schema);
     }
 
     public function testSchemaExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->schema);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->schema);
     }
 
     public function testSessionObject() {
-        $this->assertInstanceOf('Okta\Resources\Session', $this->okta->session);
+        $this->assertInstanceOf('Okta\Resource\Session', $this->okta->session);
     }
 
     public function testSessionExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->session);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->session);
     }
 
     public function testUserObject() {
-        $this->assertInstanceOf('Okta\Resources\User', $this->okta->user);
+        $this->assertInstanceOf('Okta\Resource\User', $this->okta->user);
     }
 
     public function testUserExtendsBase() {
-        $this->assertInstanceOf('Okta\Resources\Base', $this->okta->user);
+        $this->assertInstanceOf('Okta\Resource\Base', $this->okta->user);
     }
 
 }
