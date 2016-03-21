@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Users resource, accessible via $oktaClient->user
@@ -27,18 +27,21 @@ class User extends Base
 
         $request->data(['profile' => $profile]);
 
-        if (isset($credentials)) {
-            $request->data(['credentials' => $credentials]);
-        }
+        if (isset($credentials)) $request->data(['credentials' => $credentials]);
 
         if (isset($provider)) {
-            $request->data(['credentials' => ['provider' => $provider]]);
+
+            $request->data([
+                'credentials' => [
+                    'provider' => $provider
+                ]
+            ]);
+
             $request->query(['provider' => true]);
+
         }
 
-        if (isset($activate)) {
-            $request->query(['activate' => $activate]);
-        }
+        if (isset($activate)) $request->query(['activate' => $activate]);
 
         return $request->send();
 
@@ -75,21 +78,10 @@ class User extends Base
 
         $request = $this->request->get('users');
 
-        if (isset($q)) {
-            $this->query(['q' => $q]);
-        }
-
-        if (isset($limit)) {
-            $this->query(['limit' => $limit]);
-        }
-
-        if (isset($filter)) {
-            $this->query(['filter' => $filter]);
-        }
-
-        if (isset($after)) {
-            $this->query(['after' => $after]);
-        }
+        if (isset($q))      $request->query(['q' => $q]);
+        if (isset($limit))  $request->query(['limit' => $limit]);
+        if (isset($filter)) $request->query(['filter' => $filter]);
+        if (isset($after))  $request->query(['after' => $after]);
 
         return $request->send();
 
@@ -103,17 +95,12 @@ class User extends Base
      *
      * @return object              Updated user object
      */
-    public function update($uid, $profile = null, $credentials = null) {
+    public function update($uid, array $profile = null, array $credentials = null) {
 
         $request = $this->request->post('users/' . $uid);
 
-        if (isset($profile)) {
-            $request->data(['profile' => $profile]);
-        }
-
-        if (isset($credentials)) {
-            $request->data(['credentials' => $credentials]);
-        }
+        if (isset($profile))     $request->data(['profile' => $profile]);
+        if (isset($credentials)) $request->data(['credentials' => $credentials]);
 
         return $request->send();
 
@@ -169,9 +156,7 @@ class User extends Base
 
         $request = $this->request->post('users/' . $uid . '/lifecycle/activate');
 
-        if (isset($sendEmail)) {
-            $request->query(['sendEmail' => $sendEmail]);
-        }
+        if (isset($sendEmail)) $request->query(['sendEmail' => $sendEmail]);
 
         return $request->send();
 
@@ -212,7 +197,7 @@ class User extends Base
      */
     public function suspend($uid) {
 
-        $request = $this->request->post('users/:id/lifecycle/suspend');
+        $request = $this->request->post('users/' . $uid . '/lifecycle/suspend');
 
         return $request->send();
 
@@ -298,9 +283,7 @@ class User extends Base
 
         $request = $this->request->post('users/' . $uid . '/lifecycle/expire_password');
 
-        if (isset($tempPassword)) {
-            $request->query(['tempPassword' => $tempPassword]);
-        }
+        if (isset($tempPassword)) $request->query(['tempPassword' => $tempPassword]);
 
         return $request->send();
 
@@ -340,9 +323,7 @@ class User extends Base
 
         $request = $this->request->post('users/' . $uid . '/credentials/forgot_password');
 
-        if (isset($sendEmail)) {
-            $request->query(['sendEmail' => $sendEmail]);
-        }
+        if (isset($sendEmail)) $request->query(['sendEmail' => $sendEmail]);
 
         return $request->send();
 
@@ -364,7 +345,10 @@ class User extends Base
 
         $request = $this->request->post('users/' . $uid . '/credentials/change_password');
 
-        $request->data(['oldPassword' => $oldPass, 'newPassword' => $newPass]);
+        $request->data([
+            'oldPassword' => $oldPass,
+            'newPassword' => $newPass
+        ]);
 
         return $request->send();
 

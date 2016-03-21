@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Groups resource, accessible via $oktaClient->group
@@ -17,7 +17,7 @@ class Group extends Base
      *
      * @return object         The created Group.
      */
-    public function add($profile) {
+    public function add(array $profile) {
 
         $request = $this->request->post('groups');
 
@@ -58,21 +58,10 @@ class Group extends Base
 
         $request = $this->request->get('groups');
 
-        if (isset($q)) {
-            $request->query(['q' => $q]);
-        }
-
-        if (isset($filter)) {
-            $request->query(['filter' => $filter]);
-        }
-
-        if (isset($limit)) {
-            $request->query(['limit' => $limit]);
-        }
-
-        if (isset($after)) {
-            $request->query(['after' => $after]);
-        }
+        if (isset($q))      $request->query(['q' => $q]);
+        if (isset($filter)) $request->query(['filter' => $filter]);
+        if (isset($limit))  $request->query(['limit' => $limit]);
+        if (isset($after))  $request->query(['after' => $after]);
 
         return $request->send();
 
@@ -88,7 +77,7 @@ class Group extends Base
      *
      * @return object          Updated Group
      */
-    public function update($id, $profile) {
+    public function update($id, array $profile) {
 
         $request = $this->request->put('groups/' . $id);
 
@@ -128,13 +117,8 @@ class Group extends Base
 
         $request = $this->request->get('groups/' . $id . '/users');
 
-        if (isset($limit)) {
-            $request->query(['limit' => $limit]);
-        }
-
-        if (isset($after)) {
-            $request->query(['after' => $after]);
-        }
+        if (isset($limit)) $request->query(['limit' => $limit]);
+        if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
 
@@ -189,13 +173,8 @@ class Group extends Base
 
         $request = $this->request->get('groups/' . $id . '/apps');
 
-        if (isset($limit)) {
-            $request->query(['limit' => $limit]);
-        }
-
-        if (isset($after)) {
-            $request->query(['after' => $after]);
-        }
+        if (isset($limit)) $request->query(['limit' => $limit]);
+        if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
 

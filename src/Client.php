@@ -4,17 +4,15 @@ namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 
-use Okta\Request as OktaRequest;
-
-use Okta\Resources\App;
-use Okta\Resources\Authentication;
-use Okta\Resources\Event;
-use Okta\Resources\Factor;
-use Okta\Resources\Group;
-use Okta\Resources\Role;
-use Okta\Resources\Schema;
-use Okta\Resources\Session;
-use Okta\Resources\User;
+use Okta\Resource\App;
+use Okta\Resource\Authentication;
+use Okta\Resource\Event;
+use Okta\Resource\Factor;
+use Okta\Resource\Group;
+use Okta\Resource\Role;
+use Okta\Resource\Schema;
+use Okta\Resource\Session;
+use Okta\Resource\User;
 
 /**
  * Okta\Client class
@@ -24,55 +22,106 @@ use Okta\Resources\User;
 class Client {
 
     /**
-     * @var string Okta org subdomain prefix
+     * @var object Instance of GuzzleHttp\Client object
      */
-    protected $org;
+    protected $client;
 
     /**
-     * @var string Okta API key
+     * @var object Instance of Okta\Resource\App object
      */
-    protected $key;
+    public $app;
 
     /**
-     * @var array Array of client headers
+     * @var object Instance of Okta\Resource\Authentication object
      */
-    protected $headers = [];
+    public $auth;
+
+    /**
+     * @var object Instance of Okta\Resource\Event object
+     */
+    public $event;
+
+    /**
+     * @var object Instance of Okta\Resource\Factor object
+     */
+    public $factor;
+
+    /**
+     * @var object Instance of Okta\Resource\Group object
+     */
+    public $group;
+
+    /**
+     * @var object Instance of Okta\Resource\Role object
+     */
+    public $role;
+
+    /**
+     * @var object Instance of Okta\Resource\Schema object
+     */
+    public $schema;
+
+    /**
+     * @var object Instance of Okta\Resource\Session object
+     */
+    public $session;
+
+    /**
+     * @var object Instance of Okta\Resource\User object
+     */
+    public $user;
 
     /**
      * Okta\Client constructor method
      *
-     * @param string $org     Your organization's subdomain (tenant)
-     * @param string $key     Your Okta API key
-     * @param array  $headers Array of headers in header_name => value format
+     * @param string $org       Your organization's subdomain (tenant)
+     * @param string $key       Your Okta API key
+     * @param array  $headers   Array of headers in header_name => value format
+     * @param bool   $bootstrap If true, bootstrap Okta resource properties
      */
-    public function __construct($org, $key, array $headers = null) {
+    public function __construct($org, $key, array $headers = [], $bootstrap = true) {
 
-        $this->org = $org;
-        $this->key = $key;
-
-        if (isset($headers)) {
-            $this->headers = $headers;
-        }
-
-        $client = new GuzzleClient ([
-            'base_uri'   => 'https://' . $this->org . '.okta.com/api/v1/',
+        $this->client = new GuzzleClient ([
+            'base_uri'   => 'https://' . $org . '.okta.com/api/v1/',
             'exceptions' => false,
             'headers'    => array_merge([
-                'Authorization' => 'SSWS ' . $this->key,
+                'Authorization' => 'SSWS ' . $key,
                 'Content-Type'  => 'application/json'
-            ], $this->headers)
+            ], $headers)
         ]);
 
-        $this->app     = new App(new OktaRequest($client));
-        $this->auth    = new Authentication(new OktaRequest($client));
-        $this->event   = new Event(new OktaRequest($client));
-        $this->factor  = new Factor(new OktaRequest($client));
-        $this->group   = new Group(new OktaRequest($client));
-        $this->role    = new Role(new OktaRequest($client));
-        $this->schema  = new Schema(new OktaRequest($client));
-        $this->session = new Session(new OktaRequest($client));
-        $this->user    = new User(new OktaRequest($client));
+        if ($bootstrap) $this->bootstrap();
 
+    }
+
+    /**
+     * Bootstraps all Okta\Resources for easy access
+     *
+     * @return object This Okta\Client object
+     */
+    protected function bootstrap() {
+
+        $this->app     = new App($this);
+        $this->auth    = new Authentication($this);
+        $this->event   = new Event($this);
+        $this->factor  = new Factor($this);
+        $this->group   = new Group($this);
+        $this->role    = new Role($this);
+        $this->schema  = new Schema($this);
+        $this->session = new Session($this);
+        $this->user    = new User($this);
+
+        return $this;
+
+    }
+
+    /**
+     * Return $this->client property
+     *
+     * @return GuzzleClient GuzzleHttp\Client object
+     */
+    public function client() {
+        return $this->client;
     }
 
 }

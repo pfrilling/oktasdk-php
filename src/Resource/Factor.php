@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Factors (MFA) resource, accessible via
@@ -93,7 +93,7 @@ class Factor extends Base
      * @return object         All responses return the enrolled Factor with a
      *                        status of either PENDING_ACTIVATION or ACTIVE.
      */
-    public function enroll($uid, $factor) {
+    public function enroll($uid, array $factor) {
 
         $request = $this->request->post('users/' . $uid . '/factors')->data($factor);
 
@@ -148,9 +148,9 @@ class Factor extends Base
      */
     public function activate($uid, $fid, $passCode) {
 
-        $request = $this->request->post('users/' . $uid . '/factors/' . $fid . '/lifecycle/activate')->data([
-            'passCode' => $passCode
-        ]);
+        $request = $this->request->post('users/' . $uid . '/factors/' . $fid . '/lifecycle/activate');
+
+        $request->data(['passCode' => $passCode]);
 
         return $request->send();
 
@@ -188,9 +188,7 @@ class Factor extends Base
 
         $request = $this->request->post('users/' . $uid . '/factors/' . $fid . '/verify');
 
-        if (isset($verification)) {
-            $request->data($verification);
-        }
+        if (isset($verification)) $request->data($verification);
 
         return $request->send();
 

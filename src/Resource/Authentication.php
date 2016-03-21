@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Authentication resource, accessible via
@@ -37,17 +37,9 @@ class Authentication extends Base
             'password' => $password
         ]);
 
-        if (isset($relayState)) {
-            $request->data(['relayState' => $relayState]);
-        }
-
-        if (isset($options)) {
-            $request->data(['options' => $options]);
-        }
-
-        if (isset($context)) {
-            $request->data(['context' => $context]);
-        }
+        if (isset($relayState)) $request->data(['relayState' => $relayState]);
+        if (isset($options))    $request->data(['options' => $options]);
+        if (isset($context))    $request->data(['context' => $context]);
 
         return $request->send();
 
@@ -74,7 +66,9 @@ class Authentication extends Base
      */
     public function changePassword($oldPassword, $newPassword, $stateToken) {
 
-        $request = $this->request->post('authn/credentials/change_password')->data([
+        $request = $this->request->post('authn/credentials/change_password');
+
+        $request->data([
             'stateToken'  => $stateToken,
             'oldPassword' => $oldPassword,
             'newPassword' => $newPassword
@@ -97,7 +91,9 @@ class Authentication extends Base
      */
     public function enrollFactor($stateToken, $factorType, $provider, array $profile) {
 
-        $request = $this->request->post('authn/factors')->data([
+        $request = $this->request->post('authn/factors');
+
+        $request->data([
             'stateToken' => $stateToken,
             'factorType' => $factorType,
             'provider'   => $provider,
@@ -119,7 +115,9 @@ class Authentication extends Base
      */
     public function activateFactor($stateToken, $fid, $passCode) {
 
-        $request = $this->request->post('authn/factors/' . $fid . '/lifecycle/activate')->data([
+        $request = $this->request->post('authn/factors/' . $fid . '/lifecycle/activate');
+
+        $request->data([
             'stateToken' => $stateToken,
             'passCode'   => $passCode
         ]);
@@ -134,11 +132,11 @@ class Authentication extends Base
      *
      * @param  string $fid          ID of factor returned from enrollment
      * @param  string $stateToken   State token for current transaction
-     * @param  string $verification Array of verification properties
+     * @param  array  $verification Array of verification properties
      *
      * @return object               Authentication Transaction Object
      */
-    public function verifyFactor($fid, $stateToken, $verification) {
+    public function verifyFactor($fid, $stateToken, array $verification) {
 
         $request = $this->request->post('authn/factors/' . $fid . '/verify');
 
@@ -201,11 +199,7 @@ class Authentication extends Base
      * @return object             Authentication Transaction Object
      */
     public function sendSmsChallenge($fid, $stateToken) {
-
-        return $this->verifyFactor($fid, $stateToken, [
-            'stateToken' => $stateToken
-        ]);
-
+        return $this->verifyFactor($fid, $stateToken, []);
     }
 
     /**
@@ -245,13 +239,8 @@ class Authentication extends Base
 
         $request->data(['username' => $username]);
 
-        if (isset($factorType)) {
-            $request->data(['factorType' => $factorType]);
-        }
-
-        if (isset($relayState)) {
-            $request->data(['relayState' => $relayState]);
-        }
+        if (isset($factorType)) $request->data(['factorType' => $factorType]);
+        if (isset($relayState)) $request->data(['relayState' => $relayState]);
 
         return $request->send();
 
@@ -276,13 +265,8 @@ class Authentication extends Base
 
         $request->data(['username' => $username]);
 
-        if (isset($factorType)) {
-            $request->data(['factorType' => $factorType]);
-        }
-
-        if (isset($relayState)) {
-            $request->data(['relayState' => $relayState]);
-        }
+        if (isset($factorType)) $request->data(['factorType' => $factorType]);
+        if (isset($relayState)) $request->data(['relayState' => $relayState]);
 
         return $request->send();
 

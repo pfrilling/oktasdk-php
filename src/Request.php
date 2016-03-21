@@ -2,7 +2,7 @@
 
 namespace Okta;
 
-use GuzzleHttp\Client as GuzzleClient;
+use Okta\Client as OktaClient;
 use Okta\Exception as OktaException;
 
 use Exception;
@@ -43,10 +43,10 @@ class Request
     /**
      * Okta\Request contructor method
      *
-     * @param object $client Instance of GuzzleHttp\Client
+     * @param object $client Instance of Okta\Client
      */
-    public function __construct(GuzzleClient $client) {
-        $this->client = $client;
+    public function __construct(OktaClient $client) {
+        $this->client = $client->client();
     }
 
     /**
@@ -54,7 +54,7 @@ class Request
      *
      * @param  string $method HTTP method (GET|POST|PUT|DELETE)
      *
-     * @return object         This request object
+     * @return object         This Okta\Request object
      */
     public function method($method) {
 
@@ -74,7 +74,7 @@ class Request
      * @param  string $endpoint Request endpoint (absolute path or relative to
      *                          the base URI)
      *
-     * @return object           This request object
+     * @return object           This Okta\Request object
      */
     public function endpoint($endpoint) {
         $this->endpoint = $endpoint;
@@ -86,7 +86,7 @@ class Request
      *
      * @param  string $endpoint Request endpoint
      *
-     * @return object           OktaRequest object
+     * @return object           This Okta\Request object
      */
     public function get($endpoint) {
         $this->method('GET')->endpoint($endpoint);
@@ -98,7 +98,7 @@ class Request
      *
      * @param  string $endpoint Request endpoint
      *
-     * @return object           OktaRequest object
+     * @return object           This Okta\Request object
      */
     public function post($endpoint) {
         $this->method('POST')->endpoint($endpoint);
@@ -110,7 +110,7 @@ class Request
      *
      * @param  string $endpoint Request endpoint
      *
-     * @return object           OktaRequest object
+     * @return object           This Okta\Request object
      */
     public function put($endpoint) {
         $this->method('PUT')->endpoint($endpoint);
@@ -121,7 +121,7 @@ class Request
      * Convenience function for making an HTTP DELETE request
      *
      * @param  string $endpoint Request endpoint
-     * @return object           OktaRequest object
+     * @return object           This Okta\Request object
      */
     public function delete($endpoint) {
         $this->method('DELETE')->endpoint($endpoint);
@@ -134,7 +134,7 @@ class Request
      * @param  string $key   Option key
      * @param  strgin $value Option value
      *
-     * @return object        This request object
+     * @return object        This Okta\Request object
      */
     public function option($key, $value) {
         $this->options[$key] = $value;
@@ -148,7 +148,7 @@ class Request
      * @param  bool   $override If true override all currently stored query
      *                          values with the new values being provided
      *
-     * @return object           This request object
+     * @return object           This Okta\Request object
      */
     public function query(array $query, $override = false) {
 
@@ -174,7 +174,7 @@ class Request
      * @param  bool   $override If true override all currently stored json data
      *                          with the new data being provided
      *
-     * @return object           This request object
+     * @return object           This Okta\Request object
      */
     public function json(array $data, $override = false) {
 
@@ -196,7 +196,7 @@ class Request
      * @param  bool   $override If true override all currently stored json data
      *                          with the new data being provided
      *
-     * @return object           This request object
+     * @return object           This Okta\Request object
      */
     public function data(array $data, $override = false) {
         return $this->json($data, $override);
@@ -208,7 +208,7 @@ class Request
      *
      * @param  float  $seconds Seconds to wait before request times out
      *
-     * @return object          This request object
+     * @return object          This Okta\Request object
      */
     public function timeout($seconds) {
         $this->option('timeout', $seconds);
@@ -239,7 +239,7 @@ class Request
         $bodyContents = $response->getBody()->getContents();
 
         if (!in_array($response->getStatusCode(), [200, 201, 202, 203, 204, 205, 206])) {
-            throw new OktaException(null, null, 0, json_decode($bodyContents));
+            throw new OktaException(json_decode($bodyContents));
         }
 
         return json_decode($bodyContents, $this->assoc);

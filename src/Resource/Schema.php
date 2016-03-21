@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Schemas resource, accessible via
@@ -36,7 +36,7 @@ class Schema extends Base
      *
      * @return obeject           User Schema
      */
-    public function userProperty($definitions) {
+    public function userProperty(array $definitions) {
 
         $request = $this->request->post('meta/schemas/user/default');
 
