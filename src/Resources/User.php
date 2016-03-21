@@ -13,7 +13,7 @@ class User extends Base
     /**
      * Creates a new user in your Okta organization with or without credentials.
      *
-     * @param  arry    $profile     Array of user profile properties
+     * @param  array   $profile     Array of user profile properties
      * @param  array   $credentials Array of user credentials
      * @param  boolean $activate    Weather or not to execute activation
      *                              lifecycle operation when creating the user
@@ -55,7 +55,7 @@ class User extends Base
      *
      * @param  string  $q      Searches firstName, lastName, and email
      *                         properties of users for matching value
-     * @param  integer $limit  Specified the number of results
+     * @param  int     $limit  Specified the number of results
      * @param  string  $filter Filter expression for users
      * @param  boolean $after  Specifies the pagination cursor for the next page of users
      *
