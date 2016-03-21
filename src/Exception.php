@@ -20,7 +20,7 @@ class Exception extends \Exception
      * @param int        $code     The internal exception code
      */
     public function __construct($responseObject, Exception $previous = null, $code = 0) {
-        parent::__construct($message, $code, $previous);
+        parent::__construct('', $code, $previous);
         $this->responseObject = $responseObject;
     }
 
