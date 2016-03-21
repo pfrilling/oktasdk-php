@@ -2,7 +2,7 @@
 
 use Okta\Client as OktaClient;
 
-class OktaObjectTest extends PHPUnit_Framework_TestCase
+class OktaClientBootstrappedTest extends PHPUnit_Framework_TestCase
 {
 
     protected $okta;
@@ -15,7 +15,11 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Client', $this->okta);
     }
 
-    public function testAppObject() {
+    public function testClientPropertyObject() {
+        $this->assertInstanceOf('GuzzleHttp\Client', $this->okta->client());
+    }
+
+    public function testAppPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\App', $this->okta->app);
     }
 
@@ -23,7 +27,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->app);
     }
 
-    public function testAuthObject() {
+    public function testAuthPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Authentication', $this->okta->auth);
     }
 
@@ -31,7 +35,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->auth);
     }
 
-    public function testEventObject() {
+    public function testEventPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Event', $this->okta->event);
     }
 
@@ -39,7 +43,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->event);
     }
 
-    public function testFactorObject() {
+    public function testFactorPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Factor', $this->okta->factor);
     }
 
@@ -47,7 +51,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->factor);
     }
 
-    public function testGroupObject() {
+    public function testGroupPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Group', $this->okta->group);
     }
 
@@ -55,7 +59,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->group);
     }
 
-    public function testRoleObject() {
+    public function testRolePropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Role', $this->okta->role);
     }
 
@@ -63,7 +67,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->role);
     }
 
-    public function testSchemaObject() {
+    public function testSchemaPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Schema', $this->okta->schema);
     }
 
@@ -71,7 +75,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->schema);
     }
 
-    public function testSessionObject() {
+    public function testSessionPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\Session', $this->okta->session);
     }
 
@@ -79,7 +83,7 @@ class OktaObjectTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Okta\Resource\Base', $this->okta->session);
     }
 
-    public function testUserObject() {
+    public function testUserPropertyObject() {
         $this->assertInstanceOf('Okta\Resource\User', $this->okta->user);
     }
 
