@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Roles resource, accessible via $oktaClient->role
@@ -14,6 +14,7 @@ class Role extends Base
      * Lists all roles assigned to a user.
      *
      * @param  string $uid ID of user
+     *
      * @return array      Array of Roles
      */
     public function listRoles($uid) {
@@ -73,13 +74,8 @@ class Role extends Base
 
         $request = $this->request->get('users/' . $uid . '/roles/' . $rid . '/targets/groups');
 
-        if (isset($limit)) {
-            $request->query(['limit' => $limit]);
-        }
-
-        if (isset($after)) {
-            $request->query(['after' => $after]);
-        }
+        if (isset($limit)) $request->query(['limit' => $limit]);
+        if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
 
@@ -100,13 +96,8 @@ class Role extends Base
 
         $request = $this->request->get('users/' . $uid . '/roles/' . $rid . '/targets/catalog/apps');
 
-        if (isset($limit)) {
-            $request->query(['limit' => $limit]);
-        }
-
-        if (isset($after)) {
-            $request->query(['after' => $after]);
-        }
+        if (isset($limit)) $request->query(['limit' => $limit]);
+        if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
 

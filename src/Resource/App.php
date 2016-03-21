@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Apps resource, accessible via $oktaClient->app
@@ -78,21 +78,10 @@ class App extends Base
 
         $request = $this->request->get('users/');
 
-        if(isset($limit)) {
-            $request->query(['limit'  => $limit]);
-        }
-
-        if(isset($filter)) {
-            $request->query(['filter' => $filter]);
-        }
-
-        if(isset($after)) {
-            $request->query(['after'  => $after]);
-        }
-
-        if(isset($expand)) {
-            $request->query(['expand' => $expand]);
-        }
+        if (isset($limit))  $request->query(['limit'  => $limit]);
+        if (isset($filter)) $request->query(['filter' => $filter]);
+        if (isset($after))  $request->query(['after'  => $after]);
+        if (isset($expand)) $request->query(['expand' => $expand]);
 
         return $request->send();
 
@@ -209,13 +198,8 @@ class App extends Base
 
         $request = $this->request->get('apps/' . $aid . '/users');
 
-        if (isset($limit)) {
-            $request = $this->request->query(['limit' => $limit]);
-        }
-
-        if (isset($after)) {
-            $request = $this->request->query(['after' => $after]);
-        }
+        if (isset($limit)) $request->query(['limit' => $limit]);
+        if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
 

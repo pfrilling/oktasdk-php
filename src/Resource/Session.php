@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Sessions resource, accessible via
@@ -28,15 +28,11 @@ class Session extends Base
      */
     public function create($sessionToken, $additionalFields = null) {
 
-        $request = $this->request->post('sessions')->data([
-            'sessionToken' => $sessionToken
-        ]);
+        $request = $this->request->post('sessions');
 
-        if (isset($additionalFields)) {
-            $request->query([
-                'additionalFields' => $additionalFields
-            ]);
-        }
+        $request->data(['sessionToken' => $sessionToken]);
+
+        if (isset($additionalFields)) $request->query(['additionalFields' => $additionalFields]);
 
         return $request->send();
 

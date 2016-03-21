@@ -1,6 +1,6 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
 /**
  * Implementation of the Okta Events resource, accessible via $oktaClient->event
@@ -20,9 +20,7 @@ class Event extends Base
 
         $request = $this->request->get('events');
 
-        if (isset($query)) {
-            $request->query($query);
-        }
+        if (isset($query)) $request->query($query);
 
         return $request->send();
 

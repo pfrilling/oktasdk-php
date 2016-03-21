@@ -40,7 +40,7 @@ Usage
 
 All Okta resources are available via the `$okta->$resource->$method` syntax
 where `$resource` is the lower case, singular name of the resource (i.e. -
-Users = `user', Groups = `group`, etc.) and `$method` is the method name (see
+Users = `user`, Groups = `group`, etc.) and `$method` is the method name (see
 the docs for all available methods). The only exception being the Authentication
 resource for which the method name is `auth` (because `authentication` is just
 too long).

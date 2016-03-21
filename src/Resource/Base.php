@@ -1,8 +1,8 @@
 <?php
 
-namespace Okta\Resources;
+namespace Okta\Resource;
 
-use GuzzleHttp\Client as GuzzleClient;
+use Okta\Client as OktaClient;
 use Okta\Request as OktaRequest;
 
 /**
@@ -19,10 +19,10 @@ abstract class Base
     /**
      * Okta\Resources\Base constructor method
      *
-     * @param object $request  Instance of GuzzleClient
+     * @param object $client Instance of GuzzleClient
      */
-    public function __construct(OktaRequest $request) {
-        $this->request = $request;
+    public function __construct(OktaClient $client) {
+        $this->request = new OktaRequest($client);
     }
 
 }
