@@ -15,20 +15,30 @@ class User extends Base
      *
      * @param  array   $profile     Array of user profile properties
      * @param  array   $credentials Array of user credentials
+     * @param  array   $provider    Array of authentication provider properties
      * @param  boolean $activate    Weather or not to execute activation
      *                              lifecycle operation when creating the user
      *
      * @return object               User model object
      */
-    public function create($profile, $credentials = [], $activate = true) {
+    public function create(array $profile, array $credentials = null, array $provider = null, $activate = null) {
 
         $request = $this->request->post('users');
 
-        $request->data([
-            'profile'     => $profile,
-            'credentials' => $credentials,
-            'activate'    => $activate
-        ]);
+        $request->data(['profile' => $profile]);
+
+        if (isset($credentials)) {
+            $request->data(['credentials' => $credentials]);
+        }
+
+        if (isset($provider)) {
+            $request->data(['credentials' => ['provider' => $provider]]);
+            $request->query(['provider' => true]);
+        }
+
+        if (isset($activate)) {
+            $request->query(['activate' => $activate]);
+        }
 
         return $request->send();
 
