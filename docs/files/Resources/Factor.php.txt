@@ -95,7 +95,7 @@ class Factor extends Base
      */
     public function enroll($uid, $factor) {
 
-        $request->this->request->post('users/' . $uid . '/factors')->data($factor);
+        $request = $this->request->post('users/' . $uid . '/factors')->data($factor);
 
         return $request->send();
 

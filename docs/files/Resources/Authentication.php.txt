@@ -203,7 +203,6 @@ class Authentication extends Base
     public function sendSmsChallenge($fid, $stateToken) {
 
         return $this->verifyFactor($fid, $stateToken, [
-            'fid'        => $fid,
             'stateToken' => $stateToken
         ]);
 
@@ -215,13 +214,13 @@ class Authentication extends Base
      * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
      *
-     * @return [type]             [description]
+     * @return object             Authentication Transaction Object
      */
     public function resendSmsChallenge($fid, $stateToken) {
 
-        $request = $this->request->post('authn/factors/' . $fid . '/verify/resend')->data([
-            'stateToken' => $stateToken
-        ]);
+        $request = $this->request->post('authn/factors/' . $fid . '/verify/resend');
+
+        $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
 
