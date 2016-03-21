@@ -10,6 +10,9 @@ namespace Okta;
 class Exception extends \Exception
 {
 
+    /**
+     * @var object The response object to handle
+     */
     private $responseObject;
 
     /**
@@ -19,8 +22,8 @@ class Exception extends \Exception
      * @param \Exception $previous The previous exception
      * @param int        $code     The internal exception code
      */
-    public function __construct($responseObject, Exception $previous = null, $code = 0,) {
-        parent::__construct($message, $code, $previous);
+    public function __construct($responseObject, Exception $previous = null, $code = 0) {
+        parent::__construct('', $code, $previous);
         $this->responseObject = $responseObject;
     }
 
@@ -72,7 +75,9 @@ class Exception extends \Exception
     /**
      * Return response error causes
      *
-     * @return array Array of error causes
+     * @param string        $key Specific key of error to fetch
+     *
+     * @return array|string      Array of error causes or specific error string
      */
     public function getErrorCauses($key = null) {
 
