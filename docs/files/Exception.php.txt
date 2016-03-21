@@ -19,22 +19,17 @@ class Exception extends \Exception
      * @param \Exception $previous The previous exception
      * @param int        $code     The internal exception code
      */
-    public function __construct($message = null, Exception $previous = null, $code = 0, $responseObject = null) {
-
+    public function __construct($responseObject, Exception $previous = null, $code = 0,) {
         parent::__construct($message, $code, $previous);
-
-        if ($responseObject != null) {
-            $this->responseObject = $responseObject;
-        }
-
+        $this->responseObject = $responseObject;
     }
 
     /**
      * Return response object
      *
-     * @return object Response objects
+     * @return object Okta response object
      */
-    public function getErrorResponse() {
+    public function getResponseObject() {
         return $this->responseObject;
     }
 
