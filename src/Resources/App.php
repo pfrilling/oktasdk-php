@@ -224,12 +224,12 @@ class App extends Base
     /**
      * Updates a user’s credentials and/or profile for an assigned application
      *
-     * @param  string $aid Unique key of Application
-     * @param  string $uid Unique key of assigned User
+     * @param  string $aid     Unique key of Application
+     * @param  string $uid     Unique key of assigned User
      * @param  array  $appuser Array of user credentials and (optional) profile
      *                         for the app
      *
-     * @return [type]          [description]
+     * @return object          Application User@
      */
     public function updateUser($aid, $uid, $appuser) {
 
@@ -269,7 +269,7 @@ class App extends Base
      * @param  string $gid      Unique key of a valid Group
      * @param  array  $appgroup [description]
      *
-     * @return object           The assigned Application Group.
+     * @return object           The assigned Application Group
      */
     public function assignGroup($aid, $gid, $appgroup) {
 

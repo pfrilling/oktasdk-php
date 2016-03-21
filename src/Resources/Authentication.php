@@ -214,7 +214,7 @@ class Authentication extends Base
      * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
      *
-     * @return [type]             [description]
+     * @return object             Authentication Transaction Object
      */
     public function resendSmsChallenge($fid, $stateToken) {
 
