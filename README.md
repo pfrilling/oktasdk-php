@@ -5,6 +5,9 @@ OktaSDK-PHP
 
 PHP client library for the Okta API (v1)
 
+Refer to the full [Okta API documentation](http://developer.okta.com/docs/api)
+for more complete information on each resource/component.
+
 
 Install with Composer
 ---------------------
