@@ -4,6 +4,8 @@ namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 
+use Okta\Request as OktaRequest;
+
 use Okta\Resource\App;
 use Okta\Resource\Authentication;
 use Okta\Resource\Event;
@@ -122,6 +124,31 @@ class Client {
      */
     public function client() {
         return $this->client;
+    }
+
+    /**
+     * Perform a cusom request
+     *
+     * @param string $method   Set request method
+     * @param string $endpoint Set request endpoint
+     * @param array  $option   Array of options to send with the request
+     *
+     * @return object          Request response
+     */
+    public function request($method, $endpoint, array $options = null) {
+
+        $request = new OktaRequest($this);
+
+        $request->method($method)->endpoint($endpoint);
+
+        if (isset($options)) {
+            foreach ($options as $key => $value) {
+                $request->option($key, $value);
+            }
+        }
+
+        return $request->send();
+
     }
 
 }
