@@ -1,13 +1,15 @@
 OktaSDK-PHP
 ===========
 
-[![Build Status](https://travis-ci.com/iodatacenters/oktasdk-php.svg?token=9xaCNqHne23WxG4ZXsCj&branch=master)](https://travis-ci.com/iodatacenters/oktasdk-php)
+[![Latest Stable Version](https://img.shields.io/packagist/v/iodatacenters/oktasdk-php.svg)](https://packagist.org/packages/iodatacenters/oktasdk-php)
+[![Total Downloads](https://img.shields.io/packagist/dt/iodatacenters/oktasdk-php.svg)](https://packagist.org/packages/iodatacenters/oktasdk-php)
+[![License](https://img.shields.io/packagist/l/iodatacenters/oktasdk-php.svg)](https://packagist.org/packages/iodatacenters/oktasdk-php)
+[![Build Status](https://img.shields.io/travis/iodatacenters/oktasdk-php.svg)](https://travis-ci.org/iodatacenters/oktasdk-php)
 
 PHP client library for the Okta API (v1)
 
 Refer to the full [Okta API documentation](http://developer.okta.com/docs/api)
 for more complete information on each resource/component.
-
 
 Install with Composer
 ---------------------
@@ -15,7 +17,6 @@ Install with Composer
 ```bash
 composer require iodatacenters/oktasdk
 ```
-
 
 Initializing the Client
 -----------------------
@@ -33,7 +34,6 @@ use Okta;
 
 $okta = new Okta\Client('foo', 'api_key');
 ```
-
 
 Usage
 -----
@@ -58,7 +58,6 @@ $group = $okta->group->addUser($someGroupId, $user->id);
 $userApps = $okta->user->apps($user->id);
 ```
 
-
 Handling Exceptions
 -------------------
 
@@ -73,7 +72,6 @@ try {
 ```
 
 See documentation for available exception methods.
-
 
 Contributing
 ------------
@@ -110,3 +108,25 @@ Contributing
 
   7. [Open a Pull Request](https://github.com/iodatacenters/oktasdk-php/pull/new)
      on GitHub.
+
+-----
+
+**Copyright (c) 2016 [IO Data Centers](https://www.io.com)**
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
