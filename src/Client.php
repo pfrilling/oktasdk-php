@@ -122,7 +122,7 @@ class Client {
      *
      * @return GuzzleClient GuzzleHttp\Client object
      */
-    public function client() {
+    public function instance() {
         return $this->client;
     }
 
