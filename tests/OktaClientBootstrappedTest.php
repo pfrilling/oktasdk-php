@@ -16,7 +16,7 @@ class OktaClientBootstrappedTest extends PHPUnit_Framework_TestCase
     }
 
     public function testClientPropertyObject() {
-        $this->assertInstanceOf('GuzzleHttp\Client', $this->okta->client());
+        $this->assertInstanceOf('GuzzleHttp\Client', $this->okta->instance());
     }
 
     public function testAppPropertyObject() {
