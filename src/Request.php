@@ -46,7 +46,7 @@ class Request
      * @param object $client Instance of Okta\Client
      */
     public function __construct(OktaClient $client) {
-        $this->client = $client->client();
+        $this->client = $client->instance();
     }
 
     /**
