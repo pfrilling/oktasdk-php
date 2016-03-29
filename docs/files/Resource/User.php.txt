@@ -274,10 +274,11 @@ class User extends Base
      * temporary password that is returned, and then the temporary password is
      * expired.
      *
-     * @param  string $uid          User ID
-     * @param  string $tempPassword New temporary password
+     * @param  string $uid           User ID
+     * @param  boolean $tempPassword Sets the user’s password to a temporary
+     *                               password, if true
      *
-     * @return object               User object
+     * @return object                User object
      */
     public function expirePassword($uid, $tempPassword = null) {
 

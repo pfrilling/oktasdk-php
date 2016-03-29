@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-539036222"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1014194563"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-539036222" class="accordion-body collapse in">
+            <div id="namespace-1014194563" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-985171171"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-468717087"></a>
                                 <a href="../namespaces/Okta.html" style="margin-left: 30px; padding-left: 0">Okta</a>
             </div>
-            <div id="namespace-985171171" class="accordion-body collapse ">
+            <div id="namespace-468717087" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1351880459"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-387041940"></a>
                                 <a href="../namespaces/Okta.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
             </div>
-            <div id="namespace-1351880459" class="accordion-body collapse ">
+            <div id="namespace-387041940" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -921,7 +921,7 @@ to reset their password.</p>
             <article class="method">
                 <h3 class="public ">expirePassword()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">expirePassword(string  <span class="argument">$uid</span>, string  <span class="argument">$tempPassword = null</span>) : object</pre>
+                <pre class="signature" style="margin-right: 54px;">expirePassword(string  <span class="argument">$uid</span>, boolean  <span class="argument">$tempPassword = null</span>) : object</pre>
                 <p><em>This operation will transition the user to the status of PASSWORD_EXPIRED
 and the user will be required to change their password at their next
 login. If tempPassword is passed, the user’s password is reset to a
@@ -937,9 +937,10 @@ expired.</em></p>
                                 <td><p>User ID</p></td>
                             </tr>
                                                     <tr>
-                                <td>string</td>
+                                <td>boolean</td>
                                 <td>$tempPassword </td>
-                                <td><p>New temporary password</p></td>
+                                <td><p>Sets the user’s password to a temporary
+password, if true</p></td>
                             </tr>
                                             </table>
                 
@@ -1199,7 +1200,7 @@ credential</em></p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 22nd, 2016 at 16:23.
+                    on March 29th, 2016 at 12:21.
                 </section>
             </section>
         </section>
