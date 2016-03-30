@@ -141,7 +141,6 @@ class Authentication extends Base
         $request = $this->request->post('authn/factors/' . $fid . '/verify');
 
         $request->data([
-            'fid'        => $fid,
             'stateToken' => $stateToken
         ]);
 
