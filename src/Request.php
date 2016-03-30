@@ -152,8 +152,8 @@ class Request
      */
     public function query(array $query, $override = false) {
 
-        if (!$override && !empty($this->option['query'])) {
-            $query = array_merge($this->option['query'], $query);
+        if (!$override && !empty($this->options['query'])) {
+            $query = array_merge($this->options['query'], $query);
         }
 
         $this->option('query', $query);
