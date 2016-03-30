@@ -178,8 +178,8 @@ class Request
      */
     public function json(array $data, $override = false) {
 
-        if (!$override && !empty($this->option['json'])) {
-            $data = array_merge($this->option['json'], $data);
+        if (!$override && !empty($this->options['json'])) {
+            $data = array_merge($this->options['json'], $data);
         }
 
         $this->option('json', $data);
