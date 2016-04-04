@@ -2,13 +2,16 @@
     "name": "iodatacenters/oktasdk",
     "description": "PHP client library for the Okta API (v1)",
     "keywords": ["okta", "sdk", "api"],
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Chris Kankiewicz",
             "email": "ckankiewicz@io.com"
         }
     ],
+    "support": {
+        "issues": "https://github.com/iodatacenters/oktasdk-php/issues"
+    },
     "require": {
         "php" : ">=5.5.0",
         "guzzlehttp/guzzle": "^6.1"
