@@ -29,7 +29,7 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function authn($username, $password, $relayState = null, $options = null, $context = null) {
+    public function authn($username, $password, $relayState = null, array $options = null, array $context = null) {
 
         $request = $this->request->post('authn');
 
@@ -58,14 +58,14 @@ class Authentication extends Base
      *   - A user may opt-out of changing their password (skip) when the
      *     transaction has a PASSWORD_WARN status
      *
+     * @param  string $stateToken  State token for current transaction
      * @param  string $oldPassword User’s current password that is expired or
      *                             about to expire
      * @param  string $newPassword New password for user
-     * @param  string $stateToken  State token for current transaction
      *
      * @return object              Authentication Transaction Object
      */
-    public function changePassword($oldPassword, $newPassword, $stateToken) {
+    public function changePassword($stateToken, $oldPassword, $newPassword) {
 
         $request = $this->request->post('authn/credentials/change_password');
 
@@ -131,20 +131,17 @@ class Authentication extends Base
      * Verifies an enrolled factor for an authentication transaction with the
      * MFA_REQUIRED or MFA_CHALLENGE state
      *
-     * @param  string $fid          ID of factor returned from enrollment
      * @param  string $stateToken   State token for current transaction
+     * @param  string $fid          ID of factor returned from enrollment
      * @param  array  $verification Array of verification properties
      *
      * @return object               Authentication Transaction Object
      */
-    public function verifyFactor($fid, $stateToken, array $verification) {
+    public function verifyFactor($stateToken, $fid, array $verification) {
 
         $request = $this->request->post('authn/factors/' . $fid . '/verify');
 
-        $request->data([
-            'stateToken' => $stateToken
-        ]);
-
+        $request->data(['stateToken' => $stateToken]);
         $request->data($verification);
 
         return $request->send();
@@ -154,63 +151,63 @@ class Authentication extends Base
     /**
      * Convinience method for verifying an answer to a question factor.
      *
-     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
+     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $answer     Answer to security question
      *
      * @return object             Authentication Transaction Object
      */
-    public function verifySecuirtyQuestionFactor($fid, $stateToken, $answer) {
-        $this->verifyFactor($fid, $stateToken, ['answer' => $answer]);
+    public function verifySecuirtyQuestionFactor($stateToken, $fid, $answer) {
+        $this->verifyFactor($stateToken, $fid, ['answer' => $answer]);
     }
 
     /**
      * Convinience method for verifying a pass code from an SMS factor.
      *
-     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
+     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $passCode   OTP sent to device
      *
      * @return object             Authentication Transaction Object
      */
-    public function verifySmsFactor($fid, $stateToken, $passCode) {
-        $this->verifyFactor($fid, $stateToken, ['passCode' => $passCode]);
+    public function verifySmsFactor($stateToken, $fid, $passCode) {
+        $this->verifyFactor($stateToken, $fid, ['passCode' => $passCode]);
     }
 
     /**
      * Convinience method for verifying an OTP for a token:software:totp factor.
      *
-     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
+     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $passCode   OTP sent to device
      *
      * @return object             Authentication Transaction Object
      */
-    public function verifyTotpFactor($fid, $stateToken, $passCode) {
-        $this->verifyFactor($fid, $stateToken, ['passCode' => $passCode]);
+    public function verifyTotpFactor($stateToken, $fid, $passCode) {
+        $this->verifyFactor($stateToken, $fid, ['passCode' => $passCode]);
     }
 
     /**
      * Convienience mthod for sending an SMS challenge to a user's device
      *
-     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
+     * @param  string $fid        ID of factor returned from enrollment
      *
      * @return object             Authentication Transaction Object
      */
-    public function sendSmsChallenge($fid, $stateToken) {
-        return $this->verifyFactor($fid, $stateToken, []);
+    public function sendSmsChallenge($stateToken, $fid) {
+        return $this->verifyFactor($stateToken, $fid, []);
     }
 
     /**
      * Resends an SMS challenge to a user's device
      *
-     * @param  string $fid        ID of factor returned from enrollment
      * @param  string $stateToken State token for current transaction
+     * @param  string $fid        ID of factor returned from enrollment
      *
      * @return object             Authentication Transaction Object
      */
-    public function resendSmsChallenge($fid, $stateToken) {
+    public function resendSmsChallenge($stateToken, $fid) {
 
         $request = $this->request->post('authn/factors/' . $fid . '/verify/resend');
 
@@ -346,7 +343,7 @@ class Authentication extends Base
         $request = $this->request->post('authn/credentials/reset_password');
 
         $request->data([
-            'stateToken' => $stateToken,
+            'stateToken'  => $stateToken,
             'newPassword' => $newPassword
         ]);
 
