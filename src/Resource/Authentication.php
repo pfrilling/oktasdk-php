@@ -31,7 +31,9 @@ class Authentication extends Base
      */
     public function authn($username, $password, $relayState = null, $options = null, $context = null) {
 
-        $request = $this->request->post('authn')->data([
+        $request = $this->request->post('authn');
+
+        $request->data([
             'username' => $username,
             'password' => $password
         ]);

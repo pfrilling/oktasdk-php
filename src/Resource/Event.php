@@ -16,7 +16,7 @@ class Event extends Base
      * @param  array $query Array of query parameters/values
      * @return array        Array of Events
      */
-    public function listEvents($query = null) {
+    public function listEvents(array $query = null) {
 
         $request = $this->request->get('events');
 

@@ -15,7 +15,7 @@ class Group extends Base
      *
      * @param  array $profile okta:user_group profile for a new group
      *
-     * @return object         The created Group.
+     * @return object         The created Group object
      */
     public function add(array $profile) {
 
@@ -28,11 +28,11 @@ class Group extends Base
     }
 
     /**
-     * Fetches a specific group by id from your organization
+     * Fetches a specific group by id from your organization.
      *
      * @param  string $id ID of a group
      *
-     * @return object     Group
+     * @return object     Group object
      */
     public function get($id) {
 
@@ -45,23 +45,16 @@ class Group extends Base
     /**
      * Enumerates groups in your organization with pagination. A subset of
      * groups can be returned that match a supported filter expression or query.
-     * @param  string $q      Searches the name property of groups for matching
-     *                        value
-     * @param  string $filter Filter expression for groups
-     * @param  int    $limit  Specifies the number of group results in a page
-     * @param  string $after  Specifies the pagination cursor for the next page
-     *                        of groups
      *
-     * @return array          Array of Groups
+     * @param  array $query Array of query parameters/values
+     *
+     * @return array          Array of Group objects
      */
-    public function listGroups($q = null, $filter = null, $limit = null, $after = null) {
+    public function listGroups(array $query = null) {
 
         $request = $this->request->get('groups');
 
-        if (isset($q))      $request->query(['q' => $q]);
-        if (isset($filter)) $request->query(['filter' => $filter]);
-        if (isset($limit))  $request->query(['limit' => $limit]);
-        if (isset($after))  $request->query(['after' => $after]);
+        if (isset($query)) $request->query($query);
 
         return $request->send();
 
