@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Roles resource, accessible via $oktaClient->role
+ * Implementation of the Okta Roles resource, access via $okta->role
  *
  * http://developer.okta.com/docs/api/resources/roles.html
  */
@@ -15,7 +15,7 @@ class Role extends Base
      *
      * @param  string $uid ID of user
      *
-     * @return array      Array of Roles
+     * @return array       Array of Roles
      */
     public function listRoles($uid) {
 
@@ -49,7 +49,7 @@ class Role extends Base
      * @param  string $uid  ID of user
      * @param  string $rid  ID of role
      *
-     * @return empty HTTP/1.1 204 No Content
+     * @return empty        HTTP/1.1 204 No Content
      */
     public function unassignRole($uid, $rid) {
 

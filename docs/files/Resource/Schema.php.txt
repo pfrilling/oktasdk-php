@@ -3,8 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Schemas resource, accessible via
- * $oktaClient->schema
+ * Implementation of the Okta Schemas resource, access via $okta->schema
  *
  * http://developer.okta.com/docs/api/resources/schemas.html
  */
