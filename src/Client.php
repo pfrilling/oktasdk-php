@@ -135,16 +135,14 @@ class Client {
      *
      * @return object          Request response
      */
-    public function request($method, $endpoint, array $options = null) {
+    public function request($method, $endpoint, array $options = []) {
 
         $request = new OktaRequest($this);
 
         $request->method($method)->endpoint($endpoint);
 
-        if (isset($options)) {
-            foreach ($options as $key => $value) {
-                $request->option($key, $value);
-            }
+        foreach ($options as $key => $value) {
+            $request->option($key, $value);
         }
 
         return $request->send();
