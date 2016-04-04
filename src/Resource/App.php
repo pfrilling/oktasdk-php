@@ -42,13 +42,13 @@ class App extends Base
     /**
      * Fetches an application from your Okta organization by id.
      *
-     * @param  string $id Application ID
+     * @param  string $aid Application ID
      *
-     * @return object     Application object
+     * @return object      Application object
      */
-    public function get($id) {
+    public function get($aid) {
 
-        $request = $this->request->get('apps/' . $id);
+        $request = $this->request->get('apps/' . $aid);
 
         return $request->send();
 
@@ -84,14 +84,14 @@ class App extends Base
     /**
      * Updates an application in your organization.
      *
-     * @param  string $id  ID of application to update
+     * @param  string $aid ID of application to update
      * @param  array  $app Associative array of updated application data
      *
      * @return object      Application object
      */
-    public function update($id, array $app) {
+    public function update($aid, array $app) {
 
-        $request = $this->request->put('apps/' . $id);
+        $request = $this->request->put('apps/' . $aid);
 
         $request->data($app);
 
@@ -103,13 +103,13 @@ class App extends Base
      * Removes an inactive application. Applications must be deactivated before
      * they can be deleted.
      *
-     * @param  string $id ID of application to delete
+     * @param  string $aid ID of application to delete
      *
-     * @return object     An empty JSON object {}
+     * @return object      An empty JSON object {}
      */
-    public function delete($id) {
+    public function delete($aid) {
 
-        $request = $this->request->delete('apps/' . $id);
+        $request = $this->request->delete('apps/' . $aid);
 
         return $request->send();
 
@@ -118,13 +118,13 @@ class App extends Base
     /**
      * Activates an inactive application.
      *
-     * @param  string $id ID of application to activate
+     * @param  string $aid ID of application to activate
      *
-     * @return object     An empty JSON object {}
+     * @return object      An empty JSON object {}
      */
-    public function activate($id) {
+    public function activate($aid) {
 
-        $request = $this->request->post('apps/' . $id . '/lifecycle/activate');
+        $request = $this->request->post('apps/' . $aid . '/lifecycle/activate');
 
         return $request->send();
 
@@ -133,13 +133,13 @@ class App extends Base
     /**
      * Deactivates an inactive application.
      *
-     * @param  string $id ID of application to deactivate
+     * @param  string $aid ID of application to deactivate
      *
-     * @return object     An empty JSON object {}
+     * @return object      An empty JSON object {}
      */
-    public function deactivate($id) {
+    public function deactivate($aid) {
 
-        $request = $this->request->post('apps/' . $id . '/lifecycle/deactivate');
+        $request = $this->request->post('apps/' . $aid . '/lifecycle/deactivate');
 
         return $request->send();
 

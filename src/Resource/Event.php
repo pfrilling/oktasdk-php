@@ -14,6 +14,7 @@ class Event extends Base
      * Fetch a list of events from your Okta organization system log
      *
      * @param  array $query Array of query parameters/values
+     *
      * @return array        Array of Events
      */
     public function listEvents(array $query = null) {
