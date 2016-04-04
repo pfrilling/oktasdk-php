@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Apps resource, accessible via $oktaClient->app
+ * Implementation of the Okta Apps resource, access via $okta->app
  *
  * http://developer.okta.com/docs/api/resources/apps.html
  */
@@ -16,31 +16,24 @@ class App extends Base
      * @param  string $name       Application name
      * @param  string $label      Application label
      * @param  string $signOnMode Application sign on mode
-     * @param  bool $activate     If true, executes activation lifecycle
+     * @param  array  $settings   Associative array of application settings
+     * @param  bool   $activate   If true, executes activation lifecycle
      *                            operation when creating the application
-     * @param  array $settings    Associative array of application settings
      *
      * @return object             Application object
      */
-    public function add($name, $label, $signOnMode, $activate = null, $settings = null) {
+    public function add($name, $label, $signOnMode, array $settings = null, $activate = null) {
 
-        $request = $this->request->post('apps/')->data([
+        $request = $this->request->post('apps');
+
+        $request->data([
             'name'       => $name,
             'label'      => $label,
             'signOnMode' => $signOnMode,
         ]);
 
-        if (isset($activate)) {
-            $request->query(['activate' => $activate]);
-        }
-
-        if (isset($settings)) {
-            $request->data([
-                'settings'   => [
-                    'app' => $settings
-                ]
-            ]);
-        }
+        if (isset($settings)) $request->data(['settings' => ['app' => $settings]]);
+        if (isset($activate)) $request->query(['activate' => $activate]);
 
         return $request->send();
 
@@ -49,13 +42,13 @@ class App extends Base
     /**
      * Fetches an application from your Okta organization by id.
      *
-     * @param  string $id Application ID
+     * @param  string $aid Application ID
      *
-     * @return object     Application object
+     * @return object      Application object
      */
-    public function get($id) {
+    public function get($aid) {
 
-        $request = $this->request->get('apps/' . $id);
+        $request = $this->request->get('apps/' . $aid);
 
         return $request->send();
 
@@ -64,6 +57,7 @@ class App extends Base
     /**
      * Enumerates apps added to your organization with pagination. A subset of
      * apps can be returned that match a supported filter expression or query.
+     *
      * @param  int    $limit  Specifies the number of results for a page
      * @param  string $filter Filters apps by status, user.id, or group.id
      *                        expression
@@ -72,11 +66,11 @@ class App extends Base
      * @param  string $expand Traverses users link relationship and optionally
      *                        embeds Application User resource
      *
-     * @return array          Array of application objects
+     * @return array          Array of Application objects
      */
     public function listApps($limit = null, $filter = null, $after = null, $expand = null) {
 
-        $request = $this->request->get('users/');
+        $request = $this->request->get('apps');
 
         if (isset($limit))  $request->query(['limit'  => $limit]);
         if (isset($filter)) $request->query(['filter' => $filter]);
@@ -90,14 +84,16 @@ class App extends Base
     /**
      * Updates an application in your organization.
      *
-     * @param  string $id  ID of application to update
-     * @param  array $app  Associative array of updated application data
+     * @param  string $aid ID of application to update
+     * @param  array  $app Associative array of updated application data
      *
      * @return object      Application object
      */
-    public function update($id, $app) {
+    public function update($aid, array $app) {
 
-        $request = $this->request->put('apps/' . $id)->data($app);
+        $request = $this->request->put('apps/' . $aid);
+
+        $request->data($app);
 
         return $request->send();
 
@@ -107,13 +103,13 @@ class App extends Base
      * Removes an inactive application. Applications must be deactivated before
      * they can be deleted.
      *
-     * @param  string $id ID of application to delete
+     * @param  string $aid ID of application to delete
      *
-     * @return object     An empty JSON object {}
+     * @return object      An empty JSON object {}
      */
-    public function delete($id) {
+    public function delete($aid) {
 
-        $request = $this->request->delete('apps/' . $id);
+        $request = $this->request->delete('apps/' . $aid);
 
         return $request->send();
 
@@ -122,13 +118,13 @@ class App extends Base
     /**
      * Activates an inactive application.
      *
-     * @param  string $id ID of application to activate
+     * @param  string $aid ID of application to activate
      *
-     * @return object     An empty JSON object {}
+     * @return object      An empty JSON object {}
      */
-    public function activate($id) {
+    public function activate($aid) {
 
-        $request = $this->request->post('apps/' . $id . '/lifecycle/activate');
+        $request = $this->request->post('apps/' . $aid . '/lifecycle/activate');
 
         return $request->send();
 
@@ -137,13 +133,13 @@ class App extends Base
     /**
      * Deactivates an inactive application.
      *
-     * @param  string $id ID of application to deactivate
+     * @param  string $aid ID of application to deactivate
      *
-     * @return object     An empty JSON object {}
+     * @return object      An empty JSON object {}
      */
-    public function deactivate($id) {
+    public function deactivate($aid) {
 
-        $request = $this->request->post('apps/' . $id . '/lifecycle/deactivate');
+        $request = $this->request->post('apps/' . $aid . '/lifecycle/deactivate');
 
         return $request->send();
 
@@ -158,7 +154,7 @@ class App extends Base
      *
      * @return object          Application User object
      */
-    public function assignUser($aid, $appuser) {
+    public function assignUser($aid, array $appuser) {
 
         $request = $this->request->post('apps/' . $aid . '/users');
 
@@ -213,9 +209,9 @@ class App extends Base
      * @param  array  $appuser Array of user credentials and (optional) profile
      *                         for the app
      *
-     * @return object          Application User@
+     * @return object          Application User
      */
-    public function updateUser($aid, $uid, $appuser) {
+    public function updateUser($aid, $uid, array $appuser) {
 
         $request = $this->request->post('apps/' . $aid . '/users/' . $uid);
 
@@ -251,13 +247,13 @@ class App extends Base
      *
      * @param  string $aid      Unique key of Application
      * @param  string $gid      Unique key of a valid Group
-     * @param  array  $appgroup [description]
+     * @param  array  $appgroup App group
      *
      * @return object           The assigned Application Group
      */
-    public function assignGroup($aid, $gid, $appgroup) {
+    public function assignGroup($aid, $gid, array $appgroup) {
 
-        $request = $this->request->post('apps/' . $aid . '/groups/' . $gid);
+        $request = $this->request->put('apps/' . $aid . '/groups/' . $gid);
 
         $request->data($appgroup);
 
@@ -271,7 +267,7 @@ class App extends Base
      * @param  string $aid Unique key of Application
      * @param  string $gid Unique key of a valid Group
      *
-     * @return object      Fetched Application Group
+     * @return object      Application Group
      */
     public function getGroup($aid, $gid) {
 
@@ -290,7 +286,7 @@ class App extends Base
      */
     public function listGroups($aid) {
 
-        $request = $this->request->get('apps/' . $aid . '/groups/');
+        $request = $this->request->get('apps/' . $aid . '/groups');
 
         return $request->send();
 
@@ -302,7 +298,7 @@ class App extends Base
      * @param  string $aid Unique key of Application
      * @param  string $gid Unique key of a valid Group
      *
-     * @return object      An empty object
+     * @return object      An empty JSON object {}
      */
     public function removeGroup($aid, $gid) {
 

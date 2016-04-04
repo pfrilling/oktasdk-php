@@ -3,8 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Factors (MFA) resource, accessible via
- * $oktaClient->factor
+ * Implementation of the Okta Factors (MFA) resource, access via $okta->factor
  *
  * http://developer.okta.com/docs/api/resources/factors.html
  */
@@ -32,7 +31,7 @@ class Factor extends Base
      *
      * @param  string $uid User ID
      *
-     * @return array       Array of user's enrolled factors
+     * @return array       Array of Factors
      */
     public function listEnrolled($uid) {
 
@@ -48,7 +47,7 @@ class Factor extends Base
      *
      * @param  string $uid User ID
      *
-     * @return array       Array of enrollable factors
+     * @return array       Array of Factors
      */
     public function catalog($uid) {
 
@@ -90,19 +89,20 @@ class Factor extends Base
      * @param  string $uid    ID of user
      * @param  array  $factor Array of factor properties
      *
-     * @return object         All responses return the enrolled Factor with a
-     *                        status of either PENDING_ACTIVATION or ACTIVE.
+     * @return object         Enrolled Factor
      */
     public function enroll($uid, array $factor) {
 
-        $request = $this->request->post('users/' . $uid . '/factors')->data($factor);
+        $request = $this->request->post('users/' . $uid . '/factors');
+
+        $request->data($factor);
 
         return $request->send();
 
     }
 
     /**
-     * Convinience method for enrolling a user with a TOTP factor.
+     * Convenience method for enrolling a user with a TOTP factor.
      *
      * @param  string $uid User ID
      *
@@ -118,7 +118,7 @@ class Factor extends Base
     }
 
     /**
-     * Convinience method for enrolling a user with a SMS factor.
+     * Convenience method for enrolling a user with a SMS factor.
      *
      * @param  string $uid         User ID
      * @param  string $phoneNumber Phone number
@@ -184,7 +184,7 @@ class Factor extends Base
      *                              answer is invalid you will receive a 403
      *                              Forbidden status code.
      */
-    public function verify($uid, $fid, $verification = null) {
+    public function verify($uid, $fid, array $verification = null) {
 
         $request = $this->request->post('users/' . $uid . '/factors/' . $fid . '/verify');
 

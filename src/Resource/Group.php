@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Groups resource, accessible via $oktaClient->group
+ * Implementation of the Okta Groups resource, access via $okta->group
  *
  * http://developer.okta.com/docs/api/resources/groups.html
  */
@@ -15,7 +15,7 @@ class Group extends Base
      *
      * @param  array $profile okta:user_group profile for a new group
      *
-     * @return object         The created Group.
+     * @return object         The created Group object
      */
     public function add(array $profile) {
 
@@ -28,15 +28,15 @@ class Group extends Base
     }
 
     /**
-     * Fetches a specific group by id from your organization
+     * Fetches a specific group by id from your organization.
      *
-     * @param  string $id ID of a group
+     * @param  string $gid ID of a group
      *
-     * @return object     Group
+     * @return object      Group object
      */
-    public function get($id) {
+    public function get($gid) {
 
-        $request = $this->request->get('groups/' . $id);
+        $request = $this->request->get('groups/' . $gid);
 
         return $request->send();
 
@@ -45,23 +45,16 @@ class Group extends Base
     /**
      * Enumerates groups in your organization with pagination. A subset of
      * groups can be returned that match a supported filter expression or query.
-     * @param  string $q      Searches the name property of groups for matching
-     *                        value
-     * @param  string $filter Filter expression for groups
-     * @param  int    $limit  Specifies the number of group results in a page
-     * @param  string $after  Specifies the pagination cursor for the next page
-     *                        of groups
      *
-     * @return array          Array of Groups
+     * @param  array $query Array of query parameters/values
+     *
+     * @return array        Array of Group objects
      */
-    public function listGroups($q = null, $filter = null, $limit = null, $after = null) {
+    public function listGroups(array $query = null) {
 
         $request = $this->request->get('groups');
 
-        if (isset($q))      $request->query(['q' => $q]);
-        if (isset($filter)) $request->query(['filter' => $filter]);
-        if (isset($limit))  $request->query(['limit' => $limit]);
-        if (isset($after))  $request->query(['after' => $after]);
+        if (isset($query)) $request->query($query);
 
         return $request->send();
 
@@ -72,14 +65,14 @@ class Group extends Base
      * organization. Only profiles for groups with OKTA_GROUP type can be
      * modified.
      *
-     * @param  string $id      ID of the group to update
+     * @param  string $gid     ID of the group to update
      * @param  array  $profile Updated profile for the group
      *
      * @return object          Updated Group
      */
-    public function update($id, array $profile) {
+    public function update($gid, array $profile) {
 
-        $request = $this->request->put('groups/' . $id);
+        $request = $this->request->put('groups/' . $gid);
 
         $request->data(['profile' => $profile]);
 
@@ -91,13 +84,13 @@ class Group extends Base
      * Removes a group with OKTA_GROUP type from your organization. Only groups
      * with OKTA_GROUP type can be removed.
      *
-     * @param  string $id ID of the group to delete
+     * @param  string $gid ID of the group to delete
      *
-     * @return object     Empty object
+     * @return object      Empty object
      */
-    public function remove($id) {
+    public function remove($gid) {
 
-        $request = $this->request->delete('groups/' . $id);
+        $request = $this->request->delete('groups/' . $gid);
 
         return $request->send();
 
@@ -106,16 +99,16 @@ class Group extends Base
     /**
      * Enumerates all users that are a member of a group.
      *
-     * @param  string $id    ID of the group
+     * @param  string $gid   ID of the group
      * @param  int    $limit Specifies the number of user results in a page
      * @param  string $after Specifies the pagination cursor for the next page
      *                       of users
      *
      * @return array         Array of Users
      */
-    public function listMembers($id, $limit = null, $after = null) {
+    public function listMembers($gid, $limit = null, $after = null) {
 
-        $request = $this->request->get('groups/' . $id . '/users');
+        $request = $this->request->get('groups/' . $gid . '/users');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);
@@ -162,16 +155,16 @@ class Group extends Base
      * Enumerates all applications that are assigned to a group. See Application
      * Group Operations
      *
-     * @param  string $id    ID of the group
+     * @param  string $gid   ID of the group
      * @param  int    $limit Specifies the number of user results in a page
      * @param  string $after Specifies the pagination cursor for the next page
      *                       of users
      *
      * @return array         Array of Applications
      */
-    public function listApps($id, $limit = null, $after = null) {
+    public function listApps($gid, $limit = null, $after = null) {
 
-        $request = $this->request->get('groups/' . $id . '/apps');
+        $request = $this->request->get('groups/' . $gid . '/apps');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);

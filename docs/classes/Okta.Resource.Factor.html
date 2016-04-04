@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-245059068"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2091387594"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-245059068" class="accordion-body collapse in">
+            <div id="namespace-2091387594" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1236837603"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-852237581"></a>
                                 <a href="../namespaces/Okta.html" style="margin-left: 30px; padding-left: 0">Okta</a>
             </div>
-            <div id="namespace-1236837603" class="accordion-body collapse ">
+            <div id="namespace-852237581" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-429810308"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-830511449"></a>
                                 <a href="../namespaces/Okta.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
             </div>
-            <div id="namespace-429810308" class="accordion-body collapse ">
+            <div id="namespace-830511449" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -217,8 +217,7 @@
                     <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
                     <h1><small>\Okta\Resource</small>Factor</h1>
-                    <p><em>Implementation of the Okta Factors (MFA) resource, accessible via
-$oktaClient-&gt;factor</em></p>
+                    <p><em>Implementation of the Okta Factors (MFA) resource, access via $okta-&gt;factor</em></p>
                     <p><a href="http://developer.okta.com/docs/api/resources/factors.html">http://developer.okta.com/docs/api/resources/factors.html</a></p>
                     
                                         
@@ -453,7 +452,7 @@ $oktaClient-&gt;factor</em></p>
                 
                                     <h4>Returns</h4>
                     array
-                                            &mdash; <p>Array of user's enrolled factors</p>
+                                            &mdash; <p>Array of Factors</p>
                                     				
                             </article>
         </div>
@@ -491,7 +490,7 @@ specified user.</em></p>
                 
                                     <h4>Returns</h4>
                     array
-                                            &mdash; <p>Array of enrollable factors</p>
+                                            &mdash; <p>Array of Factors</p>
                                     				
                             </article>
         </div>
@@ -607,8 +606,7 @@ specified user.</em></p>
                 
                                     <h4>Returns</h4>
                     object
-                                            &mdash; <p>All responses return the enrolled Factor with a
-status of either PENDING_ACTIVATION or ACTIVE.</p>
+                                            &mdash; <p>Enrolled Factor</p>
                                     				
                             </article>
         </div>
@@ -630,7 +628,7 @@ status of either PENDING_ACTIVATION or ACTIVE.</p>
                 <h3 class="public ">enrollTotp()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">enrollTotp(string  <span class="argument">$uid</span>) : object</pre>
-                <p><em>Convinience method for enrolling a user with a TOTP factor.</em></p>
+                <p><em>Convenience method for enrolling a user with a TOTP factor.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -667,7 +665,7 @@ status of either PENDING_ACTIVATION or ACTIVE.</p>
                 <h3 class="public ">enrollSms()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">enrollSms(string  <span class="argument">$uid</span>, string  <span class="argument">$phoneNumber</span>) : object</pre>
-                <p><em>Convinience method for enrolling a user with a SMS factor.</em></p>
+                <p><em>Convenience method for enrolling a user with a SMS factor.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -1037,7 +1035,7 @@ will have a result of WAITING, SUCCESS, REJECTED, or TIMEOUT.</em></p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on March 29th, 2016 at 12:21.
+                    on April 4th, 2016 at 14:03.
                 </section>
             </section>
         </section>

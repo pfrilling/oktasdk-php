@@ -2,8 +2,7 @@
 
 namespace Okta\Resource;
 
-use Okta\Client as OktaClient;
-use Okta\Request as OktaRequest;
+use Okta;
 
 /**
  * Okta resource base class.  All Okta resources should extend this class.
@@ -11,9 +10,7 @@ use Okta\Request as OktaRequest;
 abstract class Base
 {
 
-    /**
-     * @var object Okta\Request object
-     */
+    /** @var object Okta\Request object*/
     protected $request;
 
     /**
@@ -21,8 +18,8 @@ abstract class Base
      *
      * @param object $client Instance of GuzzleClient
      */
-    public function __construct(OktaClient $client) {
-        $this->request = new OktaRequest($client);
+    public function __construct(Okta\Client $client) {
+        $this->request = new Okta\Request($client);
     }
 
 }

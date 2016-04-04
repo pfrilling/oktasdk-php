@@ -3,8 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Sessions resource, accessible via
- * $oktaClient->session
+ * Implementation of the Okta Sessions resource, access via $okta->session
  *
  * http://developer.okta.com/docs/api/resources/sessions.html
  */
@@ -41,13 +40,13 @@ class Session extends Base
     /**
      * Extends the lifetime of a user’s session.
      *
-     * @param  string $sid ID of a valid session
-     * @return empty       Invalid sessions will return a 404 Not Found status
-     *                     code.
+     * @param  string $id ID of a valid session
+     * @return empty      Invalid sessions will return a 404 Not Found status
+     *                    code.
      */
-    public function extend($sid) {
+    public function extend($id) {
 
-        $request = $this->request->put('sessions/' . $sid);
+        $request = $this->request->put('sessions/' . $id);
 
         return $request->send();
 
@@ -56,14 +55,14 @@ class Session extends Base
     /**
      * Closes a user’s session (logout).
      *
-     * @param  string $sid ID of a valid session
+     * @param  string $id ID of a valid session
      *
-     * @return empty       Invalid sessions will return a 404 Not Found status
-     *                     code.
+     * @return empty      Invalid sessions will return a 404 Not Found status
+     *                    code.
      */
-    public function close($sid) {
+    public function close($id) {
 
-        $request = $this->request->delete('sessions/' . $sid);
+        $request = $this->request->delete('sessions/' . $id);
 
         return $request->send();
 

@@ -29,9 +29,9 @@ an API key for your organization, see
 #### Example:
 
 ```php
-use Okta\Client as OktaClient;
+use Okta;
 
-$okta = new OktaClient('foo', 'api_key');
+$okta = new Okta\Client('foo', 'api_key');
 ```
 
 
@@ -48,7 +48,7 @@ too long).
 #### Example:
 
 ```php
-// Get's user by ID
+// Get a user by ID
 $user = $okta->user->get('jpinkerton');
 
 // Add user to a group
@@ -63,11 +63,11 @@ Handling Exceptions
 -------------------
 
 ```php
-use Okta\Exeception as OktaException;
+use Okta;
 
 try {
     $user = $okta->user->get('jpinkerton');
-} catch (OktaException as $e) {
+} catch (Okta\Exception as $e) {
     return $e->getErrorSummary();
 }
 ```
@@ -78,8 +78,7 @@ See documentation for available exception methods.
 Contributing
 ------------
 
-  1. [Fork](https://github.com/iodatacenters/oktasdk-php#fork-destination-box)
-     the repository
+  1. Fork [the repository](https://github.com/iodatacenters/oktasdk-php)
 
   2. Clone your fork:
 

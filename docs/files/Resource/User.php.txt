@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Users resource, accessible via $oktaClient->user
+ * Implementation of the Okta Users resource, access via $okta->user
  *
  * http://developer.okta.com/docs/api/resources/users.html
  */
@@ -66,22 +66,15 @@ class User extends Base
      * Enumerates users in your organization with pagination. A subset of users
      * can be returned that match a supported filter expression or query.
      *
-     * @param  string  $q      Searches firstName, lastName, and email
-     *                         properties of users for matching value
-     * @param  int     $limit  Specified the number of results
-     * @param  string  $filter Filter expression for users
-     * @param  boolean $after  Specifies the pagination cursor for the next page of users
+     * @param  array $query Array of query parameters/values
      *
-     * @return array           Array of user objects
+     * @return array        Array of user objects
      */
-    public function listUsers($q = null, $limit = null, $filter = null, $after = null) {
+    public function listUsers(array $query = null) {
 
         $request = $this->request->get('users');
 
-        if (isset($q))      $request->query(['q' => $q]);
-        if (isset($limit))  $request->query(['limit' => $limit]);
-        if (isset($filter)) $request->query(['filter' => $filter]);
-        if (isset($after))  $request->query(['after' => $after]);
+        if (isset($query)) $request->query($query);
 
         return $request->send();
 
@@ -89,6 +82,7 @@ class User extends Base
 
     /**
      * Update a user’s profile and/or credentials with partial update semantics.
+     *
      * @param  string $uid         ID of user to update
      * @param  array  $profile     Array of user profile properties
      * @param  array  $credentials Array of credential properties
@@ -259,9 +253,7 @@ class User extends Base
 
         $request = $this->request->post('users/' . $uid . '/lifecycle/reset_password');
 
-        if (isset($sendEmail)) {
-            $request->query(['sendEmail' => $sendEmail]);
-        }
+        if (isset($sendEmail)) $request->query(['sendEmail' => $sendEmail]);
 
         return $request->send();
 
@@ -342,7 +334,7 @@ class User extends Base
      *
      * @return object          User credentials object
      */
-    public function changePassword($uid, $oldPass, $newPass) { // resetPassword()
+    public function changePassword($uid, $oldPass, $newPass) {
 
         $request = $this->request->post('users/' . $uid . '/credentials/change_password');
 

@@ -4,18 +4,6 @@ namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 
-use Okta\Request as OktaRequest;
-
-use Okta\Resource\App;
-use Okta\Resource\Authentication;
-use Okta\Resource\Event;
-use Okta\Resource\Factor;
-use Okta\Resource\Group;
-use Okta\Resource\Role;
-use Okta\Resource\Schema;
-use Okta\Resource\Session;
-use Okta\Resource\User;
-
 /**
  * Okta\Client class
  *
@@ -23,54 +11,34 @@ use Okta\Resource\User;
  */
 class Client {
 
-    /**
-     * @var object Instance of GuzzleHttp\Client object
-     */
+    /** @var object Instance of GuzzleHttp\Client object */
     protected $client;
 
-    /**
-     * @var object Instance of Okta\Resource\App object
-     */
+    /** @var object Instance of Okta\Resource\App object */
     public $app;
 
-    /**
-     * @var object Instance of Okta\Resource\Authentication object
-     */
+    /** @var object Instance of Okta\Resource\Authentication object */
     public $auth;
 
-    /**
-     * @var object Instance of Okta\Resource\Event object
-     */
+    /** @var object Instance of Okta\Resource\Event object */
     public $event;
 
-    /**
-     * @var object Instance of Okta\Resource\Factor object
-     */
+    /** @var object Instance of Okta\Resource\Factor object */
     public $factor;
 
-    /**
-     * @var object Instance of Okta\Resource\Group object
-     */
+    /** @var object Instance of Okta\Resource\Group object */
     public $group;
 
-    /**
-     * @var object Instance of Okta\Resource\Role object
-     */
+    /** @var object Instance of Okta\Resource\Role object */
     public $role;
 
-    /**
-     * @var object Instance of Okta\Resource\Schema object
-     */
+    /** @var object Instance of Okta\Resource\Schema object */
     public $schema;
 
-    /**
-     * @var object Instance of Okta\Resource\Session object
-     */
+    /** @var object Instance of Okta\Resource\Session object */
     public $session;
 
-    /**
-     * @var object Instance of Okta\Resource\User object
-     */
+    /** @var object Instance of Okta\Resource\User object */
     public $user;
 
     /**
@@ -103,15 +71,15 @@ class Client {
      */
     protected function bootstrap() {
 
-        $this->app     = new App($this);
-        $this->auth    = new Authentication($this);
-        $this->event   = new Event($this);
-        $this->factor  = new Factor($this);
-        $this->group   = new Group($this);
-        $this->role    = new Role($this);
-        $this->schema  = new Schema($this);
-        $this->session = new Session($this);
-        $this->user    = new User($this);
+        $this->app     = new Resource\App($this);
+        $this->auth    = new Resource\Authentication($this);
+        $this->event   = new Resource\Event($this);
+        $this->factor  = new Resource\Factor($this);
+        $this->group   = new Resource\Group($this);
+        $this->role    = new Resource\Role($this);
+        $this->schema  = new Resource\Schema($this);
+        $this->session = new Resource\Session($this);
+        $this->user    = new Resource\User($this);
 
         return $this;
 
@@ -135,16 +103,14 @@ class Client {
      *
      * @return object          Request response
      */
-    public function request($method, $endpoint, array $options = null) {
+    public function request($method, $endpoint, array $options = []) {
 
-        $request = new OktaRequest($this);
+        $request = new Okta\Request($this);
 
         $request->method($method)->endpoint($endpoint);
 
-        if (isset($options)) {
-            foreach ($options as $key => $value) {
-                $request->option($key, $value);
-            }
+        foreach ($options as $key => $value) {
+            $request->option($key, $value);
         }
 
         return $request->send();
