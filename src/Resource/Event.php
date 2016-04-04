@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Events resource, accessible via $oktaClient->event
+ * Implementation of the Okta Events resource, access via $okta->event
  *
  * http://developer.okta.com/docs/api/resources/events.html
  */

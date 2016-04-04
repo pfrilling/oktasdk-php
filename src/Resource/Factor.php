@@ -3,8 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Factors (MFA) resource, accessible via
- * $oktaClient->factor
+ * Implementation of the Okta Factors (MFA) resource, access via $okta->factor
  *
  * http://developer.okta.com/docs/api/resources/factors.html
  */

@@ -4,18 +4,6 @@ namespace Okta;
 
 use GuzzleHttp\Client as GuzzleClient;
 
-use Okta\Request as OktaRequest;
-
-use Okta\Resource\App;
-use Okta\Resource\Authentication;
-use Okta\Resource\Event;
-use Okta\Resource\Factor;
-use Okta\Resource\Group;
-use Okta\Resource\Role;
-use Okta\Resource\Schema;
-use Okta\Resource\Session;
-use Okta\Resource\User;
-
 /**
  * Okta\Client class
  *
@@ -83,15 +71,15 @@ class Client {
      */
     protected function bootstrap() {
 
-        $this->app     = new App($this);
-        $this->auth    = new Authentication($this);
-        $this->event   = new Event($this);
-        $this->factor  = new Factor($this);
-        $this->group   = new Group($this);
-        $this->role    = new Role($this);
-        $this->schema  = new Schema($this);
-        $this->session = new Session($this);
-        $this->user    = new User($this);
+        $this->app     = new Resource\App($this);
+        $this->auth    = new Resource\Authentication($this);
+        $this->event   = new Resource\Event($this);
+        $this->factor  = new Resource\Factor($this);
+        $this->group   = new Resource\Group($this);
+        $this->role    = new Resource\Role($this);
+        $this->schema  = new Resource\Schema($this);
+        $this->session = new Resource\Session($this);
+        $this->user    = new Resource\User($this);
 
         return $this;
 
@@ -117,7 +105,7 @@ class Client {
      */
     public function request($method, $endpoint, array $options = []) {
 
-        $request = new OktaRequest($this);
+        $request = new Okta\Request($this);
 
         $request->method($method)->endpoint($endpoint);
 

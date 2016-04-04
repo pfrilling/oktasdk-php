@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Groups resource, accessible via $oktaClient->group
+ * Implementation of the Okta Groups resource, access via $okta->group
  *
  * http://developer.okta.com/docs/api/resources/groups.html
  */

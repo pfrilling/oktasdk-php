@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Users resource, accessible via $oktaClient->user
+ * Implementation of the Okta Users resource, access via $okta->user
  *
  * http://developer.okta.com/docs/api/resources/users.html
  */

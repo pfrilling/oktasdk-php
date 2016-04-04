@@ -2,9 +2,7 @@
 
 namespace Okta;
 
-use Okta\Client as OktaClient;
-use Okta\Exception as OktaException;
-
+use Okta;
 use Exception;
 
 /**
@@ -35,7 +33,7 @@ class Request
      *
      * @param object $client Instance of Okta\Client
      */
-    public function __construct(OktaClient $client) {
+    public function __construct(Okta\Client $client) {
         $this->client = $client->instance();
     }
 
@@ -48,7 +46,7 @@ class Request
      */
     public function method($method) {
 
-        if (!in_array($method, ['GET', 'POST', 'PUT', 'DELETE'])) {
+        if (! in_array($method, ['GET', 'POST', 'PUT', 'DELETE'])) {
             throw new Exception('Method parameter not an acceptable HTTP method (GET, POST, PUT, DELETE)');
         }
 
@@ -142,7 +140,7 @@ class Request
      */
     public function query(array $query, $override = false) {
 
-        if (!$override && !empty($this->options['query'])) {
+        if (! $override && ! empty($this->options['query'])) {
             $query = array_merge($this->options['query'], $query);
         }
 
@@ -168,7 +166,7 @@ class Request
      */
     public function json(array $data, $override = false) {
 
-        if (!$override && !empty($this->options['json'])) {
+        if (! $override && ! empty($this->options['json'])) {
             $data = array_merge($this->options['json'], $data);
         }
 
@@ -228,8 +226,8 @@ class Request
 
         $bodyContents = $response->getBody()->getContents();
 
-        if (!in_array($response->getStatusCode(), [200, 201, 202, 203, 204, 205, 206])) {
-            throw new OktaException(json_decode($bodyContents));
+        if (! in_array($response->getStatusCode(), [200, 201, 202, 203, 204, 205, 206])) {
+            throw new Okta\Exception(json_decode($bodyContents));
         }
 
         return json_decode($bodyContents, $this->assoc);

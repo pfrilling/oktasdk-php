@@ -3,7 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Roles resource, accessible via $oktaClient->role
+ * Implementation of the Okta Roles resource, access via $okta->role
  *
  * http://developer.okta.com/docs/api/resources/roles.html
  */

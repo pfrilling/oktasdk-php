@@ -3,8 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Sessions resource, accessible via
- * $oktaClient->session
+ * Implementation of the Okta Sessions resource, access via $okta->session
  *
  * http://developer.okta.com/docs/api/resources/sessions.html
  */

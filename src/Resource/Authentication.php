@@ -3,8 +3,7 @@
 namespace Okta\Resource;
 
 /**
- * Implementation of the Okta Authentication resource, accessible via
- * $oktaClient->auth
+ * Implementation of the Okta Authentication resource, access via $okta->auth
  *
  * http://developer.okta.com/docs/api/resources/authn.html
  */
