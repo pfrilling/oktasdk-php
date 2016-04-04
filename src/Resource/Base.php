@@ -11,9 +11,7 @@ use Okta\Request as OktaRequest;
 abstract class Base
 {
 
-    /**
-     * @var object Okta\Request object
-     */
+    /** @var object Okta\Request object*/
     protected $request;
 
     /**

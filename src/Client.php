@@ -23,54 +23,34 @@ use Okta\Resource\User;
  */
 class Client {
 
-    /**
-     * @var object Instance of GuzzleHttp\Client object
-     */
+    /** @var object Instance of GuzzleHttp\Client object */
     protected $client;
 
-    /**
-     * @var object Instance of Okta\Resource\App object
-     */
+    /** @var object Instance of Okta\Resource\App object */
     public $app;
 
-    /**
-     * @var object Instance of Okta\Resource\Authentication object
-     */
+    /** @var object Instance of Okta\Resource\Authentication object */
     public $auth;
 
-    /**
-     * @var object Instance of Okta\Resource\Event object
-     */
+    /** @var object Instance of Okta\Resource\Event object */
     public $event;
 
-    /**
-     * @var object Instance of Okta\Resource\Factor object
-     */
+    /** @var object Instance of Okta\Resource\Factor object */
     public $factor;
 
-    /**
-     * @var object Instance of Okta\Resource\Group object
-     */
+    /** @var object Instance of Okta\Resource\Group object */
     public $group;
 
-    /**
-     * @var object Instance of Okta\Resource\Role object
-     */
+    /** @var object Instance of Okta\Resource\Role object */
     public $role;
 
-    /**
-     * @var object Instance of Okta\Resource\Schema object
-     */
+    /** @var object Instance of Okta\Resource\Schema object */
     public $schema;
 
-    /**
-     * @var object Instance of Okta\Resource\Session object
-     */
+    /** @var object Instance of Okta\Resource\Session object */
     public $session;
 
-    /**
-     * @var object Instance of Okta\Resource\User object
-     */
+    /** @var object Instance of Okta\Resource\User object */
     public $user;
 
     /**

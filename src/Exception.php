@@ -10,9 +10,7 @@ namespace Okta;
 class Exception extends \Exception
 {
 
-    /**
-     * @var object The response object to handle
-     */
+    /** @var object The response object to handle */
     private $responseObject;
 
     /**

@@ -15,29 +15,19 @@ use Exception;
 class Request
 {
 
-    /**
-     * @var object GuzzleHttp\Client instance
-     */
+    /** @var object Okta\Client instance  */
     protected $client;
 
-    /**
-     * @var string Request HTTP method (GET|POST|PUT|DELETE)
-     */
+    /** @var string Request HTTP method (GET|POST|PUT|DELETE) */
     protected $method;
 
-    /**
-     * @var string Request endpoint
-     */
+    /** @var string Request endpoint */
     protected $endpoint;
 
-    /**
-     * @var array Array of request options
-     */
+    /** @var array Array of request options */
     protected $options = [];
 
-    /**
-     * @var boolean Wether or not to return associative arrays
-     */
+    /** @var boolean Wether or not to return associative arrays */
     protected $assoc = false;
 
     /**
