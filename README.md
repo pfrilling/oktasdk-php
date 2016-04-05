@@ -1,9 +1,9 @@
 OktaSDK-PHP
 ===========
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/iodatacenters/oktasdk-php.svg)](https://packagist.org/packages/iodatacenters/oktasdk-php)
-[![Total Downloads](https://img.shields.io/packagist/dt/iodatacenters/oktasdk-php.svg)](https://packagist.org/packages/iodatacenters/oktasdk-php)
-[![License](https://img.shields.io/packagist/l/iodatacenters/oktasdk-php.svg)](https://packagist.org/packages/iodatacenters/oktasdk-php)
+[![Latest Stable Version](https://img.shields.io/packagist/v/iodatacenters/oktasdk.svg)](https://packagist.org/packages/iodatacenters/oktasdk)
+[![Total Downloads](https://img.shields.io/packagist/dt/iodatacenters/oktasdk.svg)](https://packagist.org/packages/iodatacenters/oktasdk)
+[![License](https://img.shields.io/packagist/l/iodatacenters/oktasdk.svg)](https://packagist.org/packages/iodatacenters/oktasdk)
 [![Build Status](https://img.shields.io/travis/iodatacenters/oktasdk-php.svg)](https://travis-ci.org/iodatacenters/oktasdk-php)
 
 PHP client library for the Okta API (v1)
