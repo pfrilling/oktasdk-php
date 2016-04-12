@@ -35,6 +35,19 @@ use Okta;
 $okta = new Okta\Client('foo', 'api_key');
 ```
 
+You may also optionally pass an array of config options as the third argument:
+
+```php
+$okta = new Okta\Client('foo', 'api_key', [
+    'bootstrap' => false, // Don't auto-bootstrap the Okta resource properties
+    'preview'   => true,  // Use the okta preview (oktapreview.com) domain
+    'headers'   => [
+        'Some-Header'    => 'Some value',
+        'Another-Header' => 'Another value'
+    ]
+]);
+```
+
 Usage
 -----
 
