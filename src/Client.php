@@ -46,21 +46,29 @@ class Client {
      *
      * @param string $org       Your organization's subdomain (tenant)
      * @param string $key       Your Okta API key
-     * @param array  $headers   Array of headers in header_name => value format
-     * @param bool   $bootstrap If true, bootstrap Okta resource properties
+     * @param array  $config    Array of Client config key/values
      */
-    public function __construct($org, $key, array $headers = [], $bootstrap = true) {
+    public function __construct($org, $key, array $config = []) {
+
+        $config = array_merge([
+            'apiVersion' => 'v1',
+            'bootstrap'  => true,
+            'headers'    => [],
+            'preview'    => false
+        ], $config);
+
+        $domain = $config['preview'] ? 'oktapreview.com' : 'okta.com';
 
         $this->client = new GuzzleClient ([
-            'base_uri'   => 'https://' . $org . '.okta.com/api/v1/',
+            'base_uri'   => 'https://' . $org . '.' . $domain . '/api/' . $config['apiVersion'] . '/',
             'exceptions' => false,
             'headers'    => array_merge([
                 'Authorization' => 'SSWS ' . $key,
                 'Content-Type'  => 'application/json'
-            ], $headers)
+            ], $config['headers'])
         ]);
 
-        if ($bootstrap) $this->bootstrap();
+        if ($config['bootstrap']) $this->bootstrap();
 
     }
 
