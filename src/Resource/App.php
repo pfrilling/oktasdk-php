@@ -58,24 +58,15 @@ class App extends Base
      * Enumerates apps added to your organization with pagination. A subset of
      * apps can be returned that match a supported filter expression or query.
      *
-     * @param  int    $limit  Specifies the number of results for a page
-     * @param  string $filter Filters apps by status, user.id, or group.id
-     *                        expression
-     * @param  string $after  Specifies the pagination cursor for the next page
-     *                        of apps
-     * @param  string $expand Traverses users link relationship and optionally
-     *                        embeds Application User resource
+     * @param  array $query Array of query parameters/values
      *
-     * @return array          Array of Application objects
+     * @return array        Array of Application objects
      */
-    public function listApps($limit = null, $filter = null, $after = null, $expand = null) {
+    public function listApps(array $query = null) {
 
         $request = $this->request->get('apps');
 
-        if (isset($limit))  $request->query(['limit'  => $limit]);
-        if (isset($filter)) $request->query(['filter' => $filter]);
-        if (isset($after))  $request->query(['after'  => $after]);
-        if (isset($expand)) $request->query(['expand' => $expand]);
+        if (isset($query)) $request->query($query);
 
         return $request->send();
 
