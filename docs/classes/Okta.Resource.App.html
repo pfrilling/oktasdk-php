@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-645394068"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-582897664"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-645394068" class="accordion-body collapse in">
+            <div id="namespace-582897664" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1163268901"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1483156343"></a>
                                 <a href="../namespaces/Okta.html" style="margin-left: 30px; padding-left: 0">Okta</a>
             </div>
-            <div id="namespace-1163268901" class="accordion-body collapse ">
+            <div id="namespace-1483156343" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1215192451"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-789685440"></a>
                                 <a href="../namespaces/Okta.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
             </div>
-            <div id="namespace-1215192451" class="accordion-body collapse ">
+            <div id="namespace-789685440" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -495,7 +495,7 @@ operation when creating the application</p></td>
             <article class="method">
                 <h3 class="public ">listApps()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">listApps(integer  <span class="argument">$limit = null</span>, string  <span class="argument">$filter = null</span>, string  <span class="argument">$after = null</span>, string  <span class="argument">$expand = null</span>) : array</pre>
+                <pre class="signature" style="margin-right: 54px;">listApps(array  <span class="argument">$query = null</span>) : array</pre>
                 <p><em>Enumerates apps added to your organization with pagination. A subset of
 apps can be returned that match a supported filter expression or query.</em></p>
                 
@@ -503,27 +503,9 @@ apps can be returned that match a supported filter expression or query.</em></p>
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>integer</td>
-                                <td>$limit </td>
-                                <td><p>Specifies the number of results for a page</p></td>
-                            </tr>
-                                                    <tr>
-                                <td>string</td>
-                                <td>$filter </td>
-                                <td><p>Filters apps by status, user.id, or group.id
-expression</p></td>
-                            </tr>
-                                                    <tr>
-                                <td>string</td>
-                                <td>$after </td>
-                                <td><p>Specifies the pagination cursor for the next page
-of apps</p></td>
-                            </tr>
-                                                    <tr>
-                                <td>string</td>
-                                <td>$expand </td>
-                                <td><p>Traverses users link relationship and optionally
-embeds Application User resource</p></td>
+                                <td>array</td>
+                                <td>$query </td>
+                                <td><p>Array of query parameters/values</p></td>
                             </tr>
                                             </table>
                 
@@ -1307,7 +1289,7 @@ application</em></p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on April 12th, 2016 at 12:43.
+                    on April 13th, 2016 at 09:55.
                 </section>
             </section>
         </section>
