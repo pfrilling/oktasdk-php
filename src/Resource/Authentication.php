@@ -12,14 +12,14 @@ class Authentication extends Base
 
     /**
      * Every authentication transaction starts with primary authentication which
-     * validates a user’s primary password credential. Password Policy, MFA
+     * validates a user's primary password credential. Password Policy, MFA
      * Policy, and Sign-On Policy is evaluated during primary authentication to
-     * determine if the user’s password is expired, a factor should be enrolled,
+     * determine if the user's password is expired, a factor should be enrolled,
      * or additional verification is required.
      *
-     * @param  string $username   User’s non-qualified short-name or unique
+     * @param  string $username   User's non-qualified short-name or unique
      *                            fully-qualified login
-     * @param  string $password   User’s password credential
+     * @param  string $password   User's password credential
      * @param  string $relayState Optional state value that is persisted for the
      *                            lifetime of the authentication transaction
      * @param  array  $options    Array of opt-in features for the
@@ -47,7 +47,7 @@ class Authentication extends Base
     }
 
     /**
-     * This operation changes a user’s password by providing the existing
+     * This operation changes a user's password by providing the existing
      * password and the new password password for authentication transactions
      * with either the PASSWORD_EXPIRED or PASSWORD_WARN state.
      *
@@ -59,7 +59,7 @@ class Authentication extends Base
      *     transaction has a PASSWORD_WARN status
      *
      * @param  string $stateToken  State token for current transaction
-     * @param  string $oldPassword User’s current password that is expired or
+     * @param  string $oldPassword User's current password that is expired or
      *                             about to expire
      * @param  string $newPassword New password for user
      *
@@ -219,9 +219,9 @@ class Authentication extends Base
 
     /**
      * Starts a new password recovery transaction for a given user and issues a
-     * recovery token that can be used to reset a user’s password.
+     * recovery token that can be used to reset a user's password.
      *
-     * @param  string $username   User’s non-qualified short-name or unique
+     * @param  string $username   User's non-qualified short-name or unique
      *                            fully-qualified login
      * @param  string $factorType Recovery factor to use for primary
      *                            authentication (EMAIL or SMS)
@@ -245,9 +245,9 @@ class Authentication extends Base
 
     /**
      * Starts a new unlock recovery transaction for a given user and issues a
-     * recovery token that can be used to unlock a user’s account.
+     * recovery token that can be used to unlock a user's account.
      *
-     * @param  string $username   User’s non-qualified short-name or unique
+     * @param  string $username   User's non-qualified short-name or unique
      *                            fully-qualified login
      * @param  string $factorType Recovery factor to use for primary
      *                            authentication (EMAIL or SMS)
@@ -270,7 +270,7 @@ class Authentication extends Base
     }
 
     /**
-     * Verifies a SMS OTP (passCode) sent to the user’s mobile phone for primary
+     * Verifies a SMS OTP (passCode) sent to the user's mobile phone for primary
      * authentication for a recovery transaction with RECOVERY_CHALLENGE status.
      *
      * @param  string $stateToken State token for current recovery transaction
@@ -311,11 +311,11 @@ class Authentication extends Base
     }
 
     /**
-     * Answers the user’s recovery question to ensure only the end-user redeemed
+     * Answers the user's recovery question to ensure only the end-user redeemed
      * the recovery token for recovery transaction with a RECOVERY status.
      *
      * @param  string $stateToken State token for current transaction
-     * @param  string $answer     Answer to user’s recovery question
+     * @param  string $answer     Answer to user's recovery question
      *
      * @return object             Recovery Transaction Object
      */
@@ -330,11 +330,11 @@ class Authentication extends Base
     }
 
     /**
-     * Resets a user’s password to complete a recovery transaction with a
+     * Resets a user's password to complete a recovery transaction with a
      * PASSWORD_RESET state.
      *
      * @param  string $stateToken  State token for current transaction
-     * @param  string $newPassword User’s new password
+     * @param  string $newPassword User's new password
      *
      * @return object              Recovery Transaction Object
      */
