@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2067573816"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-831666430"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-2067573816" class="accordion-body collapse in">
+            <div id="namespace-831666430" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1921919850"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-418745048"></a>
                                 <a href="../namespaces/Okta.html" style="margin-left: 30px; padding-left: 0">Okta</a>
             </div>
-            <div id="namespace-1921919850" class="accordion-body collapse ">
+            <div id="namespace-418745048" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-572674855"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1373401561"></a>
                                 <a href="../namespaces/Okta.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
             </div>
-            <div id="namespace-572674855" class="accordion-body collapse ">
+            <div id="namespace-1373401561" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -402,9 +402,9 @@
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">authn(string  <span class="argument">$username</span>, string  <span class="argument">$password</span>, string  <span class="argument">$relayState = null</span>, array  <span class="argument">$options = null</span>, array  <span class="argument">$context = null</span>) : object</pre>
                 <p><em>Every authentication transaction starts with primary authentication which
-validates a user’s primary password credential. Password Policy, MFA
+validates a user&#039;s primary password credential. Password Policy, MFA
 Policy, and Sign-On Policy is evaluated during primary authentication to
-determine if the user’s password is expired, a factor should be enrolled,
+determine if the user&#039;s password is expired, a factor should be enrolled,
 or additional verification is required.</em></p>
                 
 
@@ -413,13 +413,13 @@ or additional verification is required.</em></p>
                                                     <tr>
                                 <td>string</td>
                                 <td>$username </td>
-                                <td><p>User’s non-qualified short-name or unique
+                                <td><p>User's non-qualified short-name or unique
 fully-qualified login</p></td>
                             </tr>
                                                     <tr>
                                 <td>string</td>
                                 <td>$password </td>
-                                <td><p>User’s password credential</p></td>
+                                <td><p>User's password credential</p></td>
                             </tr>
                                                     <tr>
                                 <td>string</td>
@@ -466,7 +466,7 @@ authentication transaction</p></td>
                 <h3 class="public ">changePassword()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">changePassword(string  <span class="argument">$stateToken</span>, string  <span class="argument">$oldPassword</span>, string  <span class="argument">$newPassword</span>) : object</pre>
-                <p><em>This operation changes a user’s password by providing the existing
+                <p><em>This operation changes a user&#039;s password by providing the existing
 password and the new password password for authentication transactions
 with either the PASSWORD_EXPIRED or PASSWORD_WARN state.</em></p>
                 <ul>
@@ -491,7 +491,7 @@ transaction has a PASSWORD_WARN status</li>
                                                     <tr>
                                 <td>string</td>
                                 <td>$oldPassword </td>
-                                <td><p>User’s current password that is expired or
+                                <td><p>User's current password that is expired or
 about to expire</p></td>
                             </tr>
                                                     <tr>
@@ -900,7 +900,7 @@ MFA_REQUIRED or MFA_CHALLENGE state</em></p>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">forgotPassword(string  <span class="argument">$username</span>, string  <span class="argument">$factorType = null</span>, string  <span class="argument">$relayState = null</span>) : object</pre>
                 <p><em>Starts a new password recovery transaction for a given user and issues a
-recovery token that can be used to reset a user’s password.</em></p>
+recovery token that can be used to reset a user&#039;s password.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -908,7 +908,7 @@ recovery token that can be used to reset a user’s password.</em></p>
                                                     <tr>
                                 <td>string</td>
                                 <td>$username </td>
-                                <td><p>User’s non-qualified short-name or unique
+                                <td><p>User's non-qualified short-name or unique
 fully-qualified login</p></td>
                             </tr>
                                                     <tr>
@@ -951,7 +951,7 @@ lifetime of the recovery transaction</p></td>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">unlockAccount(string  <span class="argument">$username</span>, string  <span class="argument">$factorType = null</span>, string  <span class="argument">$relayState = null</span>) : object</pre>
                 <p><em>Starts a new unlock recovery transaction for a given user and issues a
-recovery token that can be used to unlock a user’s account.</em></p>
+recovery token that can be used to unlock a user&#039;s account.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -959,7 +959,7 @@ recovery token that can be used to unlock a user’s account.</em></p>
                                                     <tr>
                                 <td>string</td>
                                 <td>$username </td>
-                                <td><p>User’s non-qualified short-name or unique
+                                <td><p>User's non-qualified short-name or unique
 fully-qualified login</p></td>
                             </tr>
                                                     <tr>
@@ -1001,7 +1001,7 @@ lifetime of the recovery transaction</p></td>
                 <h3 class="public ">verifySmsRecoveryFactor()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">verifySmsRecoveryFactor(string  <span class="argument">$stateToken</span>, string  <span class="argument">$passCode</span>) : object</pre>
-                <p><em>Verifies a SMS OTP (passCode) sent to the user’s mobile phone for primary
+                <p><em>Verifies a SMS OTP (passCode) sent to the user&#039;s mobile phone for primary
 authentication for a recovery transaction with RECOVERY_CHALLENGE status.</em></p>
                 
 
@@ -1083,7 +1083,7 @@ end-user via out-of-band mechanism such as email</p></td>
                 <h3 class="public ">answerRecoveryQuestion()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">answerRecoveryQuestion(string  <span class="argument">$stateToken</span>, string  <span class="argument">$answer</span>) : object</pre>
-                <p><em>Answers the user’s recovery question to ensure only the end-user redeemed
+                <p><em>Answers the user&#039;s recovery question to ensure only the end-user redeemed
 the recovery token for recovery transaction with a RECOVERY status.</em></p>
                 
 
@@ -1097,7 +1097,7 @@ the recovery token for recovery transaction with a RECOVERY status.</em></p>
                                                     <tr>
                                 <td>string</td>
                                 <td>$answer </td>
-                                <td><p>Answer to user’s recovery question</p></td>
+                                <td><p>Answer to user's recovery question</p></td>
                             </tr>
                                             </table>
                 
@@ -1126,7 +1126,7 @@ the recovery token for recovery transaction with a RECOVERY status.</em></p>
                 <h3 class="public ">resetPassword()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">resetPassword(string  <span class="argument">$stateToken</span>, string  <span class="argument">$newPassword</span>) : object</pre>
-                <p><em>Resets a user’s password to complete a recovery transaction with a
+                <p><em>Resets a user&#039;s password to complete a recovery transaction with a
 PASSWORD_RESET state.</em></p>
                 
 
@@ -1140,7 +1140,7 @@ PASSWORD_RESET state.</em></p>
                                                     <tr>
                                 <td>string</td>
                                 <td>$newPassword </td>
-                                <td><p>User’s new password</p></td>
+                                <td><p>User's new password</p></td>
                             </tr>
                                             </table>
                 
@@ -1364,7 +1364,7 @@ authentication or recovery transaction</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on April 13th, 2016 at 09:55.
+                    on April 22nd, 2016 at 11:30.
                 </section>
             </section>
         </section>

@@ -38,7 +38,7 @@ class Session extends Base
     }
 
     /**
-     * Extends the lifetime of a user’s session.
+     * Extends the lifetime of a user's session.
      *
      * @param  string $id ID of a valid session
      * @return empty      Invalid sessions will return a 404 Not Found status
@@ -53,7 +53,7 @@ class Session extends Base
     }
 
     /**
-     * Closes a user’s session (logout).
+     * Closes a user's session (logout).
      *
      * @param  string $id ID of a valid session
      *

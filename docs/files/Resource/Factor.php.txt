@@ -69,7 +69,7 @@ class Factor extends Base
     }
 
     /**
-     * Enumerates all available security questions for a user’s question factor.
+     * Enumerates all available security questions for a user's question factor.
      *
      * @param  string $uid User ID
      *
