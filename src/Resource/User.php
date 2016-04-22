@@ -323,6 +323,30 @@ class User extends Base
     }
 
     /**
+     * Sets a new password for a user by validating the user’s answer to their
+     * current recovery question. This operation can only be performed on users
+     * with a valid recovery question credential and have an ACTIVE status.
+     *
+     * @param  string $uid            User ID
+     * @param  string $password       New password for user
+     * @param  string $recoveryAnswer Answer to user’s current recovery question
+     *
+     * @return object                 User Credentials object
+     */
+    public function forgotPasswordReset($uid, $password, $recoveryAnswer) {
+
+        $request = $this->request->post('users/' . $uid . '/credentials/forgot_password');
+
+        $request->data([
+            'password'         => $password,
+            'recover_question' => $recoveryAnswer
+        ]);
+
+        return $request->send();
+
+    }
+
+    /**
      * Changes a user’s password by validating the user’s current password. This
      * operation can only be performed on users in STAGED, ACTIVE,
      * PASSWORD_EXPIRED, or RECOVERY status that have a valid password
