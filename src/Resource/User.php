@@ -308,7 +308,7 @@ class User extends Base
      * @param  string $uid       User ID
      * @param  bool   $sendEmail Sends a forgot password email to the user if true
      *
-     * @return object            Returns an empty object by default. Whe
+     * @return object            Returns an empty object by default. When
      *                           sendEmail is false, returns a link for the user
      *                           to reset their password.
      */
