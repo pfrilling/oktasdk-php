@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1270877579"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1928679844"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1270877579" class="accordion-body collapse in">
+            <div id="namespace-1928679844" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1940161141"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-898461973"></a>
                                 <a href="../namespaces/Okta.html" style="margin-left: 30px; padding-left: 0">Okta</a>
             </div>
-            <div id="namespace-1940161141" class="accordion-body collapse ">
+            <div id="namespace-898461973" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-189293506"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1154994958"></a>
                                 <a href="../namespaces/Okta.Resource.html" style="margin-left: 30px; padding-left: 0">Resource</a>
             </div>
-            <div id="namespace-189293506" class="accordion-body collapse ">
+            <div id="namespace-1154994958" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -252,6 +252,7 @@
                                                                     <a href="../classes/Okta.Resource.User.html#method_expirePassword" class="">expirePassword()</a><br />
                                                                     <a href="../classes/Okta.Resource.User.html#method_resetFactors" class="">resetFactors()</a><br />
                                                                     <a href="../classes/Okta.Resource.User.html#method_forgotPassword" class="">forgotPassword()</a><br />
+                                                                    <a href="../classes/Okta.Resource.User.html#method_forgotPasswordReset" class="">forgotPasswordReset()</a><br />
                                                                     <a href="../classes/Okta.Resource.User.html#method_changePassword" class="">changePassword()</a><br />
                                                                     <a href="../classes/Okta.Resource.User.html#method_changeRecoveryQuestion" class="">changeRecoveryQuestion()</a><br />
                                                             </section>
@@ -526,7 +527,7 @@ can be returned that match a supported filter expression or query.</em></p>
                 <h3 class="public ">update()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">update(string  <span class="argument">$uid</span>, array  <span class="argument">$profile = null</span>, array  <span class="argument">$credentials = null</span>) : object</pre>
-                <p><em>Update a user’s profile and/or credentials with partial update semantics.</em></p>
+                <p><em>Update a user&#039;s profile and/or credentials with partial update semantics.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -651,7 +652,7 @@ assigned applications.</em></p>
                 <p><em>Activates a user. This operation can only be performed on users with a
 STAGED status. Activation of a user is an asynchronous operation. The
 user will have the transitioningToStatus property with a value of ACTIVE
-during activation to indicate that the user hasn’t completed the
+during activation to indicate that the user hasn&#039;t completed the
 asynchronous operation. The user will have a status of ACTIVE when the
 activation process is complete.</em></p>
                 
@@ -701,7 +702,7 @@ user to set up their account.</p>
 not have a DEPROVISIONED status. Deactivation of a user is an
 asynchronous operation. The user will have the transitioningToStatus
 property with a value of DEPROVISIONED during deactivation to indicate
-that the user hasn’t completed the asynchronous operation. The user will
+that the user hasn&#039;t completed the asynchronous operation. The user will
 have a status of DEPROVISIONED when the deactivation process is complete.</em></p>
                 
 
@@ -858,7 +859,7 @@ status. Users will be able to login with their current password.</em></p>
                 <h3 class="public ">resetPassword()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">resetPassword(string  <span class="argument">$uid</span>, boolean  <span class="argument">$sendEmail</span>) : object</pre>
-                <p><em>Generates a one-time token (OTT) that can be used to reset a user’s
+                <p><em>Generates a one-time token (OTT) that can be used to reset a user&#039;s
 password. The OTT link can be automatically emailed to the user or
 returned to the API caller and distributed using a custom flow.</em></p>
                 <p>This operation will transition the user to the status of RECOVERY and the
@@ -908,7 +909,7 @@ to reset their password.</p>
                 <pre class="signature" style="margin-right: 54px;">expirePassword(string  <span class="argument">$uid</span>, boolean  <span class="argument">$tempPassword = null</span>) : object</pre>
                 <p><em>This operation will transition the user to the status of PASSWORD_EXPIRED
 and the user will be required to change their password at their next
-login. If tempPassword is passed, the user’s password is reset to a
+login. If tempPassword is passed, the user&#039;s password is reset to a
 temporary password that is returned, and then the temporary password is
 expired.</em></p>
                 
@@ -923,7 +924,7 @@ expired.</em></p>
                                                     <tr>
                                 <td>boolean</td>
                                 <td>$tempPassword </td>
-                                <td><p>Sets the user’s password to a temporary
+                                <td><p>Sets the user's password to a temporary
 password, if true</p></td>
                             </tr>
                                             </table>
@@ -954,7 +955,7 @@ password, if true</p></td>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">resetFactors(string  <span class="argument">$uid</span>) : object</pre>
                 <p><em>This operation resets all factors for the specified user. All MFA factor
-enrollments returned to the unenrolled state. The user’s status remains
+enrollments returned to the unenrolled state. The user&#039;s status remains
 ACTIVE. This link is present only if the user is currently enrolled in
 one or more MFA factors.</em></p>
                 
@@ -993,7 +994,7 @@ one or more MFA factors.</em></p>
                 <h3 class="public ">forgotPassword()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">forgotPassword(string  <span class="argument">$uid</span>, boolean  <span class="argument">$sendEmail = null</span>) : object</pre>
-                <p><em>Generates a one-time token (OTT) that can be used to reset a user’s
+                <p><em>Generates a one-time token (OTT) that can be used to reset a user&#039;s
 password. This operation can only be performed on users with a valid
 recovery question credential and have an ACTIVE status.</em></p>
                 
@@ -1015,9 +1016,58 @@ recovery question credential and have an ACTIVE status.</em></p>
                 
                                     <h4>Returns</h4>
                     object
-                                            &mdash; <p>Returns an empty object by default. Whe
+                                            &mdash; <p>Returns an empty object by default. When
 sendEmail is false, returns a link for the user
 to reset their password.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_forgotPasswordReset" name="method_forgotPasswordReset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">forgotPasswordReset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">forgotPasswordReset(string  <span class="argument">$uid</span>, string  <span class="argument">$password</span>, string  <span class="argument">$recoveryAnswer</span>) : object</pre>
+                <p><em>Sets a new password for a user by validating the user&#039;s answer to their
+current recovery question. This operation can only be performed on users
+with a valid recovery question credential and have an ACTIVE status.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uid </td>
+                                <td><p>User ID</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$password </td>
+                                <td><p>New password for user</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$recoveryAnswer </td>
+                                <td><p>Answer to user's current recovery question</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>User Credentials object</p>
                                     				
                             </article>
         </div>
@@ -1039,7 +1089,7 @@ to reset their password.</p>
                 <h3 class="public ">changePassword()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">changePassword(string  <span class="argument">$uid</span>, string  <span class="argument">$oldPass</span>, string  <span class="argument">$newPass</span>) : object</pre>
-                <p><em>Changes a user’s password by validating the user’s current password. This
+                <p><em>Changes a user&#039;s password by validating the user&#039;s current password. This
 operation can only be performed on users in STAGED, ACTIVE,
 PASSWORD_EXPIRED, or RECOVERY status that have a valid password
 credential</em></p>
@@ -1184,7 +1234,7 @@ credential</em></p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on April 13th, 2016 at 09:55.
+                    on April 22nd, 2016 at 11:30.
                 </section>
             </section>
         </section>

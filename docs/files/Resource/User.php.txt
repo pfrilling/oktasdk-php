@@ -81,7 +81,7 @@ class User extends Base
     }
 
     /**
-     * Update a user’s profile and/or credentials with partial update semantics.
+     * Update a user's profile and/or credentials with partial update semantics.
      *
      * @param  string $uid         ID of user to update
      * @param  array  $profile     Array of user profile properties
@@ -135,7 +135,7 @@ class User extends Base
      * Activates a user. This operation can only be performed on users with a
      * STAGED status. Activation of a user is an asynchronous operation. The
      * user will have the transitioningToStatus property with a value of ACTIVE
-     * during activation to indicate that the user hasn’t completed the
+     * during activation to indicate that the user hasn't completed the
      * asynchronous operation. The user will have a status of ACTIVE when the
      * activation process is complete.
      *
@@ -161,7 +161,7 @@ class User extends Base
      * not have a DEPROVISIONED status. Deactivation of a user is an
      * asynchronous operation. The user will have the transitioningToStatus
      * property with a value of DEPROVISIONED during deactivation to indicate
-     * that the user hasn’t completed the asynchronous operation. The user will
+     * that the user hasn't completed the asynchronous operation. The user will
      * have a status of DEPROVISIONED when the deactivation process is complete.
      *
      * @param  string $uid ID of user
@@ -234,7 +234,7 @@ class User extends Base
     }
 
     /**
-     * Generates a one-time token (OTT) that can be used to reset a user’s
+     * Generates a one-time token (OTT) that can be used to reset a user's
      * password. The OTT link can be automatically emailed to the user or
      * returned to the API caller and distributed using a custom flow.
      *
@@ -262,12 +262,12 @@ class User extends Base
     /**
      * This operation will transition the user to the status of PASSWORD_EXPIRED
      * and the user will be required to change their password at their next
-     * login. If tempPassword is passed, the user’s password is reset to a
+     * login. If tempPassword is passed, the user's password is reset to a
      * temporary password that is returned, and then the temporary password is
      * expired.
      *
      * @param  string $uid           User ID
-     * @param  boolean $tempPassword Sets the user’s password to a temporary
+     * @param  boolean $tempPassword Sets the user's password to a temporary
      *                               password, if true
      *
      * @return object                User object
@@ -284,7 +284,7 @@ class User extends Base
 
     /**
      * This operation resets all factors for the specified user. All MFA factor
-     * enrollments returned to the unenrolled state. The user’s status remains
+     * enrollments returned to the unenrolled state. The user's status remains
      * ACTIVE. This link is present only if the user is currently enrolled in
      * one or more MFA factors.
      *
@@ -301,14 +301,14 @@ class User extends Base
     }
 
     /**
-     * Generates a one-time token (OTT) that can be used to reset a user’s
+     * Generates a one-time token (OTT) that can be used to reset a user's
      * password. This operation can only be performed on users with a valid
      * recovery question credential and have an ACTIVE status.
      *
      * @param  string $uid       User ID
      * @param  bool   $sendEmail Sends a forgot password email to the user if true
      *
-     * @return object            Returns an empty object by default. Whe
+     * @return object            Returns an empty object by default. When
      *                           sendEmail is false, returns a link for the user
      *                           to reset their password.
      */
@@ -323,7 +323,31 @@ class User extends Base
     }
 
     /**
-     * Changes a user’s password by validating the user’s current password. This
+     * Sets a new password for a user by validating the user's answer to their
+     * current recovery question. This operation can only be performed on users
+     * with a valid recovery question credential and have an ACTIVE status.
+     *
+     * @param  string $uid            User ID
+     * @param  string $password       New password for user
+     * @param  string $recoveryAnswer Answer to user's current recovery question
+     *
+     * @return object                 User Credentials object
+     */
+    public function forgotPasswordReset($uid, $password, $recoveryAnswer) {
+
+        $request = $this->request->post('users/' . $uid . '/credentials/forgot_password');
+
+        $request->data([
+            'password'         => $password,
+            'recover_question' => $recoveryAnswer
+        ]);
+
+        return $request->send();
+
+    }
+
+    /**
+     * Changes a user's password by validating the user's current password. This
      * operation can only be performed on users in STAGED, ACTIVE,
      * PASSWORD_EXPIRED, or RECOVERY status that have a valid password
      * credential

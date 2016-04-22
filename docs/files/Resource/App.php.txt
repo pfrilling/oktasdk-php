@@ -193,7 +193,7 @@ class App extends Base
     }
 
     /**
-     * Updates a user’s credentials and/or profile for an assigned application
+     * Updates a user's credentials and/or profile for an assigned application
      *
      * @param  string $aid     Unique key of Application
      * @param  string $uid     Unique key of assigned User
@@ -215,7 +215,7 @@ class App extends Base
     /**
      * Removes an assignment for a user from an application.
      *
-     * This is a destructive operation and the user’s app profile will not be
+     * This is a destructive operation and the user's app profile will not be
      * recoverable. If the app is enabled for provisioning and configured to
      * deactivate users, the user will also be deactivated in the target
      * application.
