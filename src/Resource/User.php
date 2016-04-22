@@ -339,7 +339,9 @@ class User extends Base
 
         $request->data([
             'password'          => $password,
-            'recovery_question' => $recoveryAnswer
+            'recovery_question' => [
+                'answer' => $recoveryAnswer
+            ]
         ]);
 
         return $request->send();
