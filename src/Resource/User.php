@@ -338,8 +338,8 @@ class User extends Base
         $request = $this->request->post('users/' . $uid . '/credentials/forgot_password');
 
         $request->data([
-            'password'         => $password,
-            'recover_question' => $recoveryAnswer
+            'password'          => $password,
+            'recovery_question' => $recoveryAnswer
         ]);
 
         return $request->send();
