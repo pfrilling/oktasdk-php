@@ -9,7 +9,6 @@ namespace Okta;
  */
 class Exception extends \Exception
 {
-
     /** @var object The response object to handle */
     private $responseObject;
 
@@ -20,7 +19,8 @@ class Exception extends \Exception
      * @param \Exception $previous The previous exception
      * @param int        $code     The internal exception code
      */
-    public function __construct($responseObject, Exception $previous = null, $code = 0) {
+    public function __construct($responseObject, Exception $previous = null, $code = 0)
+    {
         parent::__construct('', $code, $previous);
         $this->responseObject = $responseObject;
     }
@@ -30,7 +30,8 @@ class Exception extends \Exception
      *
      * @return object Okta response object
      */
-    public function getResponseObject() {
+    public function getResponseObject()
+    {
         return $this->responseObject;
     }
 
@@ -39,7 +40,8 @@ class Exception extends \Exception
      *
      * @return string Error code
      */
-    public function getErrorCode() {
+    public function getErrorCode()
+    {
         return $this->responseObject->errorCode;
     }
 
@@ -48,7 +50,8 @@ class Exception extends \Exception
      *
      * @return string Error summary
      */
-    public function getErrorSummary() {
+    public function getErrorSummary()
+    {
         return $this->responseObject->errorSummary;
     }
 
@@ -57,7 +60,8 @@ class Exception extends \Exception
      *
      * @return string Error link
      */
-    public function getErrorLink() {
+    public function getErrorLink()
+    {
         return $this->responseObject->errorLink;
     }
 
@@ -66,7 +70,8 @@ class Exception extends \Exception
      *
      * @return string Error ID
      */
-    public function getErrorId() {
+    public function getErrorId()
+    {
         return $this->responseObject->errorId;
     }
 
@@ -77,14 +82,12 @@ class Exception extends \Exception
      *
      * @return array|string      Array of error causes or specific error string
      */
-    public function getErrorCauses($key = null) {
-
+    public function getErrorCauses($key = null)
+    {
         if ($key >= 0) {
             return $this->responseObject->errorCauses[$key]->errorSummary;
         }
 
         return $this->responseObject->errorCauses;
-
     }
-
 }

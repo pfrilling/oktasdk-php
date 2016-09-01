@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class Authentication extends Base
 {
-
     /**
      * Every authentication transaction starts with primary authentication which
      * validates a user's primary password credential. Password Policy, MFA
@@ -29,8 +28,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function authn($username, $password, $relayState = null, array $options = null, array $context = null) {
-
+    public function authn($username, $password, $relayState = null, array $options = null, array $context = null)
+    {
         $request = $this->request->post('authn');
 
         $request->data([
@@ -43,7 +42,6 @@ class Authentication extends Base
         if (isset($context))    $request->data(['context' => $context]);
 
         return $request->send();
-
     }
 
     /**
@@ -65,8 +63,8 @@ class Authentication extends Base
      *
      * @return object              Authentication Transaction Object
      */
-    public function changePassword($stateToken, $oldPassword, $newPassword) {
-
+    public function changePassword($stateToken, $oldPassword, $newPassword)
+    {
         $request = $this->request->post('authn/credentials/change_password');
 
         $request->data([
@@ -76,7 +74,6 @@ class Authentication extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -90,8 +87,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function enrollFactor($stateToken, $factorType, $provider, array $profile) {
-
+    public function enrollFactor($stateToken, $factorType, $provider, array $profile)
+    {
         $request = $this->request->post('authn/factors');
 
         $request->data([
@@ -102,7 +99,6 @@ class Authentication extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -114,8 +110,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function activateFactor($stateToken, $fid, $passCode) {
-
+    public function activateFactor($stateToken, $fid, $passCode)
+    {
         $request = $this->request->post('authn/factors/' . $fid . '/lifecycle/activate');
 
         $request->data([
@@ -124,7 +120,6 @@ class Authentication extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -137,15 +132,14 @@ class Authentication extends Base
      *
      * @return object               Authentication Transaction Object
      */
-    public function verifyFactor($stateToken, $fid, array $verification) {
-
+    public function verifyFactor($stateToken, $fid, array $verification)
+    {
         $request = $this->request->post('authn/factors/' . $fid . '/verify');
 
         $request->data(['stateToken' => $stateToken]);
         $request->data($verification);
 
         return $request->send();
-
     }
 
     /**
@@ -157,7 +151,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function verifySecuirtyQuestionFactor($stateToken, $fid, $answer) {
+    public function verifySecuirtyQuestionFactor($stateToken, $fid, $answer)
+    {
         $this->verifyFactor($stateToken, $fid, ['answer' => $answer]);
     }
 
@@ -170,7 +165,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function verifySmsFactor($stateToken, $fid, $passCode) {
+    public function verifySmsFactor($stateToken, $fid, $passCode)
+    {
         $this->verifyFactor($stateToken, $fid, ['passCode' => $passCode]);
     }
 
@@ -183,7 +179,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function verifyTotpFactor($stateToken, $fid, $passCode) {
+    public function verifyTotpFactor($stateToken, $fid, $passCode)
+    {
         $this->verifyFactor($stateToken, $fid, ['passCode' => $passCode]);
     }
 
@@ -195,7 +192,8 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function sendSmsChallenge($stateToken, $fid) {
+    public function sendSmsChallenge($stateToken, $fid)
+    {
         return $this->verifyFactor($stateToken, $fid, []);
     }
 
@@ -207,14 +205,13 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function resendSmsChallenge($stateToken, $fid) {
-
+    public function resendSmsChallenge($stateToken, $fid)
+    {
         $request = $this->request->post('authn/factors/' . $fid . '/verify/resend');
 
         $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
-
     }
 
     /**
@@ -230,8 +227,8 @@ class Authentication extends Base
      *
      * @return object             Recovery Transaction Object
      */
-    public function forgotPassword($username, $factorType = null, $relayState = null) {
-
+    public function forgotPassword($username, $factorType = null, $relayState = null)
+    {
         $request = $this->request->post('authn/recovery/password');
 
         $request->data(['username' => $username]);
@@ -240,7 +237,6 @@ class Authentication extends Base
         if (isset($relayState)) $request->data(['relayState' => $relayState]);
 
         return $request->send();
-
     }
 
     /**
@@ -256,8 +252,8 @@ class Authentication extends Base
      *
      * @return object             Recovery Transaction Object
      */
-    public function unlockAccount($username, $factorType = null, $relayState = null) {
-
+    public function unlockAccount($username, $factorType = null, $relayState = null)
+    {
         $request = $this->request->post('authn/recovery/unlock');
 
         $request->data(['username' => $username]);
@@ -266,7 +262,6 @@ class Authentication extends Base
         if (isset($relayState)) $request->data(['relayState' => $relayState]);
 
         return $request->send();
-
     }
 
     /**
@@ -278,8 +273,8 @@ class Authentication extends Base
      *
      * @return object             Recovery Transaction Object
      */
-    public function verifySmsRecoveryFactor($stateToken, $passCode) {
-
+    public function verifySmsRecoveryFactor($stateToken, $passCode)
+    {
         $request = $this->request->post('authn/recovery/factors/sms/verify');
 
         $request->data([
@@ -288,7 +283,6 @@ class Authentication extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -300,14 +294,13 @@ class Authentication extends Base
      *
      * @return object                Recovery Transaction Object
      */
-    public function verifyRecoveryToken($recoveryToken) {
-
+    public function verifyRecoveryToken($recoveryToken)
+    {
         $request = $this->request->post('authn/recovery/token');
 
         $request->data(['recoveryToken' => $recoveryToken]);
 
         return $request->send();
-
     }
 
     /**
@@ -319,14 +312,13 @@ class Authentication extends Base
      *
      * @return object             Recovery Transaction Object
      */
-    public function answerRecoveryQuestion($stateToken, $answer) {
-
+    public function answerRecoveryQuestion($stateToken, $answer)
+    {
         $request = $this->request->post('authn/recovery/answer');
 
         $request->data(['answer' => $answer]);
 
         return $request->send();
-
     }
 
     /**
@@ -338,8 +330,8 @@ class Authentication extends Base
      *
      * @return object              Recovery Transaction Object
      */
-    public function resetPassword($stateToken, $newPassword) {
-
+    public function resetPassword($stateToken, $newPassword)
+    {
         $request = $this->request->post('authn/credentials/reset_password');
 
         $request->data([
@@ -348,7 +340,6 @@ class Authentication extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -358,14 +349,13 @@ class Authentication extends Base
      *
      * @return object              Recovery Transaction Object
      */
-    public function getState($stateToken) {
-
+    public function getState($stateToken)
+    {
         $request = $this->request->post('authn');
 
         $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
-
     }
 
     /**
@@ -375,14 +365,13 @@ class Authentication extends Base
      *
      * @return object              Recovery Transaction Object
      */
-    public function previousState($stateToken) {
-
+    public function previousState($stateToken)
+    {
         $request = $this->request->post('authn/previous');
 
         $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
-
     }
 
     /**
@@ -394,14 +383,13 @@ class Authentication extends Base
      *
      * @return object              Recovery Transaction Object
      */
-    public function skipState($stateToken) {
-
+    public function skipState($stateToken)
+    {
         $request = $this->request->post('authn/skip');
 
         $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
-
     }
 
     /**
@@ -413,14 +401,12 @@ class Authentication extends Base
      *                            state value that was persisted for the
      *                            authentication or recovery transaction
      */
-    public function cancel($stateToken) {
-
+    public function cancel($stateToken)
+    {
         $request = $this->request->post('authn/cancel');
 
         $request->data(['stateToken' => $stateToken]);
 
         return $request->send();
-
     }
-
 }

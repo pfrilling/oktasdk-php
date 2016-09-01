@@ -9,8 +9,8 @@ use GuzzleHttp\Client as GuzzleClient;
  *
  * @author Chris Kankiewicz <ckankiewicz@io.com>
  */
-class Client {
-
+class Client
+{
     /** @var object Instance of GuzzleHttp\Client object */
     protected $client;
 
@@ -48,8 +48,8 @@ class Client {
      * @param string $key       Your Okta API key
      * @param array  $config    Array of Client config key/values
      */
-    public function __construct($org, $key, array $config = []) {
-
+    public function __construct($org, $key, array $config = [])
+    {
         $config = array_merge([
             'apiVersion' => 'v1',
             'bootstrap'  => true,
@@ -69,7 +69,6 @@ class Client {
         ]);
 
         if ($config['bootstrap']) $this->bootstrap();
-
     }
 
     /**
@@ -77,8 +76,8 @@ class Client {
      *
      * @return object This Okta\Client object
      */
-    protected function bootstrap() {
-
+    protected function bootstrap()
+    {
         $this->app     = new Resource\App($this);
         $this->auth    = new Resource\Authentication($this);
         $this->event   = new Resource\Event($this);
@@ -90,7 +89,6 @@ class Client {
         $this->user    = new Resource\User($this);
 
         return $this;
-
     }
 
     /**
@@ -98,7 +96,8 @@ class Client {
      *
      * @return GuzzleClient GuzzleHttp\Client object
      */
-    public function instance() {
+    public function instance()
+    {
         return $this->client;
     }
 
@@ -111,8 +110,8 @@ class Client {
      *
      * @return object          Request response
      */
-    public function request($method, $endpoint, array $options = []) {
-
+    public function request($method, $endpoint, array $options = [])
+    {
         $request = new Okta\Request($this);
 
         $request->method($method)->endpoint($endpoint);
@@ -122,7 +121,5 @@ class Client {
         }
 
         return $request->send();
-
     }
-
 }

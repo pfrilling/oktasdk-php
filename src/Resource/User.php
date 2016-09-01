@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class User extends Base
 {
-
     /**
      * Creates a new user in your Okta organization with or without credentials.
      *
@@ -21,8 +20,8 @@ class User extends Base
      *
      * @return object               User model object
      */
-    public function create(array $profile, array $credentials = null, array $provider = null, $activate = null) {
-
+    public function create(array $profile, array $credentials = null, array $provider = null, $activate = null)
+    {
         $request = $this->request->post('users');
 
         $request->data(['profile' => $profile]);
@@ -44,7 +43,6 @@ class User extends Base
         if (isset($activate)) $request->query(['activate' => $activate]);
 
         return $request->send();
-
     }
 
     /**
@@ -54,12 +52,11 @@ class User extends Base
      *
      * @return object      User model object
      */
-    public function get($uid) {
-
+    public function get($uid)
+    {
         $request = $this->request->get('users/' . $uid);
 
         return $request->send();
-
     }
 
     /**
@@ -70,14 +67,13 @@ class User extends Base
      *
      * @return array        Array of user objects
      */
-    public function listUsers(array $query = null) {
-
+    public function listUsers(array $query = null)
+    {
         $request = $this->request->get('users');
 
         if (isset($query)) $request->query($query);
 
         return $request->send();
-
     }
 
     /**
@@ -89,15 +85,14 @@ class User extends Base
      *
      * @return object              Updated user object
      */
-    public function update($uid, array $profile = null, array $credentials = null) {
-
+    public function update($uid, array $profile = null, array $credentials = null)
+    {
         $request = $this->request->post('users/' . $uid);
 
         if (isset($profile))     $request->data(['profile' => $profile]);
         if (isset($credentials)) $request->data(['credentials' => $credentials]);
 
         return $request->send();
-
     }
 
     /**
@@ -108,12 +103,11 @@ class User extends Base
      *
      * @return array       Array of App Links
      */
-    public function apps($uid) {
-
+    public function apps($uid)
+    {
         $request = $this->request->get('users/' . $uid . '/appLinks');
 
         return $request->send();
-
     }
 
     /**
@@ -123,12 +117,11 @@ class User extends Base
      *
      * @return array       Array of group objects
      */
-    public function groups($uid) {
-
+    public function groups($uid)
+    {
         $request = $this->request->get('users/' . $uid . '/groups');
 
         return $request->send();
-
     }
 
     /**
@@ -146,14 +139,13 @@ class User extends Base
      *                           is false, returns an activation link for the
      *                           user to set up their account.
      */
-    public function activate($uid, $sendEmail = null) {
-
+    public function activate($uid, $sendEmail = null)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/activate');
 
         if (isset($sendEmail)) $request->query(['sendEmail' => $sendEmail]);
 
         return $request->send();
-
     }
 
     /**
@@ -168,12 +160,11 @@ class User extends Base
      *
      * @return empty       Returns an empty object
      */
-    public function deactivate($uid) {
-
+    public function deactivate($uid)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/deactivate');
 
         return $request->send();
-
     }
 
     /**
@@ -189,12 +180,11 @@ class User extends Base
      *
      * @return object      Returns an empty object
      */
-    public function suspend($uid) {
-
+    public function suspend($uid)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/suspend');
 
         return $request->send();
-
     }
 
     /**
@@ -209,12 +199,11 @@ class User extends Base
      *
      * @return object      Returns an empty object
      */
-    public function unsuspend($uid) {
-
+    public function unsuspend($uid)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/unsuspend');
 
         return $request->send();
-
     }
 
     /**
@@ -225,12 +214,11 @@ class User extends Base
      *
      * @return object      Returns an empty object
      */
-    public function unlock($uid) {
-
+    public function unlock($uid)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/unlock');
 
         return $request->send();
-
     }
 
     /**
@@ -249,14 +237,13 @@ class User extends Base
      *                           sendEmail is false, returns a link for the user
      *                           to reset their password.
      */
-    public function resetPassword($uid, $sendEmail) {
-
+    public function resetPassword($uid, $sendEmail)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/reset_password');
 
         if (isset($sendEmail)) $request->query(['sendEmail' => $sendEmail]);
 
         return $request->send();
-
     }
 
     /**
@@ -272,14 +259,13 @@ class User extends Base
      *
      * @return object                User object
      */
-    public function expirePassword($uid, $tempPassword = null) {
-
+    public function expirePassword($uid, $tempPassword = null)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/expire_password');
 
         if (isset($tempPassword)) $request->query(['tempPassword' => $tempPassword]);
 
         return $request->send();
-
     }
 
     /**
@@ -292,12 +278,11 @@ class User extends Base
      *
      * @return object      Returns an empty object by default
      */
-    public function resetFactors($uid) {
-
+    public function resetFactors($uid)
+    {
         $request = $this->request->post('users/' . $uid . '/lifecycle/reset_factors');
 
         return $request->send();
-
     }
 
     /**
@@ -312,14 +297,13 @@ class User extends Base
      *                           sendEmail is false, returns a link for the user
      *                           to reset their password.
      */
-    public function forgotPassword($uid, $sendEmail = null) {
-
+    public function forgotPassword($uid, $sendEmail = null)
+    {
         $request = $this->request->post('users/' . $uid . '/credentials/forgot_password');
 
         if (isset($sendEmail)) $request->query(['sendEmail' => $sendEmail]);
 
         return $request->send();
-
     }
 
     /**
@@ -333,8 +317,8 @@ class User extends Base
      *
      * @return object                 User Credentials object
      */
-    public function forgotPasswordReset($uid, $password, $recoveryAnswer) {
-
+    public function forgotPasswordReset($uid, $password, $recoveryAnswer)
+    {
         $request = $this->request->post('users/' . $uid . '/credentials/forgot_password');
 
         $request->data([
@@ -345,7 +329,6 @@ class User extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -360,8 +343,8 @@ class User extends Base
      *
      * @return object          User credentials object
      */
-    public function changePassword($uid, $oldPass, $newPass) {
-
+    public function changePassword($uid, $oldPass, $newPass)
+    {
         $request = $this->request->post('users/' . $uid . '/credentials/change_password');
 
         $request->data([
@@ -370,7 +353,6 @@ class User extends Base
         ]);
 
         return $request->send();
-
     }
 
     /**
@@ -383,8 +365,8 @@ class User extends Base
      *
      * @return object           Security question object
      */
-    public function changeRecoveryQuestion($uid, $password, $question, $answer) {
-
+    public function changeRecoveryQuestion($uid, $password, $question, $answer)
+    {
         $request = $this->request->post('users/' . $uid . '/credentials/change_recovery_question');
 
         $request->data([
@@ -398,7 +380,5 @@ class User extends Base
         ]);
 
         return $request->send();
-
     }
-
 }

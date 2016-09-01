@@ -9,7 +9,6 @@ use Okta;
  */
 abstract class Base
 {
-
     /** @var object Okta\Request object*/
     protected $request;
 
@@ -18,8 +17,8 @@ abstract class Base
      *
      * @param object $client Instance of GuzzleClient
      */
-    public function __construct(Okta\Client $client) {
+    public function __construct(Okta\Client $client)
+    {
         $this->request = new Okta\Request($client);
     }
-
 }

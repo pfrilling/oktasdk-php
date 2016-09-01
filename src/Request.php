@@ -12,7 +12,6 @@ use Exception;
  */
 class Request
 {
-
     /** @var object Okta\Client instance  */
     protected $client;
 
@@ -33,7 +32,8 @@ class Request
      *
      * @param object $client Instance of Okta\Client
      */
-    public function __construct(Okta\Client $client) {
+    public function __construct(Okta\Client $client)
+    {
         $this->client = $client->instance();
     }
 
@@ -44,8 +44,8 @@ class Request
      *
      * @return object         This Okta\Request object
      */
-    public function method($method) {
-
+    public function method($method)
+    {
         if (! in_array($method, ['GET', 'POST', 'PUT', 'DELETE'])) {
             throw new Exception('Method parameter not an acceptable HTTP method (GET, POST, PUT, DELETE)');
         }
@@ -53,7 +53,6 @@ class Request
         $this->method = $method;
 
         return $this;
-
     }
 
     /**
@@ -64,7 +63,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function endpoint($endpoint) {
+    public function endpoint($endpoint)
+    {
         $this->endpoint = $endpoint;
         return $this;
     }
@@ -76,7 +76,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function get($endpoint) {
+    public function get($endpoint)
+    {
         $this->method('GET')->endpoint($endpoint);
         return $this;
     }
@@ -88,7 +89,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function post($endpoint) {
+    public function post($endpoint)
+    {
         $this->method('POST')->endpoint($endpoint);
         return $this;
     }
@@ -100,7 +102,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function put($endpoint) {
+    public function put($endpoint)
+    {
         $this->method('PUT')->endpoint($endpoint);
         return $this;
     }
@@ -111,7 +114,8 @@ class Request
      * @param  string $endpoint Request endpoint
      * @return object           This Okta\Request object
      */
-    public function delete($endpoint) {
+    public function delete($endpoint)
+    {
         $this->method('DELETE')->endpoint($endpoint);
         return $this;
     }
@@ -124,7 +128,8 @@ class Request
      *
      * @return object        This Okta\Request object
      */
-    public function option($key, $value) {
+    public function option($key, $value)
+    {
         $this->options[$key] = $value;
         return $this;
     }
@@ -138,8 +143,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function query(array $query, $override = false) {
-
+    public function query(array $query, $override = false)
+    {
         if (! $override && ! empty($this->options['query'])) {
             $query = array_merge($this->options['query'], $query);
         }
@@ -147,7 +152,6 @@ class Request
         $this->option('query', $query);
 
         return $this;
-
     }
 
     /**
@@ -164,8 +168,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function json(array $data, $override = false) {
-
+    public function json(array $data, $override = false)
+    {
         if (! $override && ! empty($this->options['json'])) {
             $data = array_merge($this->options['json'], $data);
         }
@@ -173,7 +177,6 @@ class Request
         $this->option('json', $data);
 
         return $this;
-
     }
 
     /**
@@ -186,7 +189,8 @@ class Request
      *
      * @return object           This Okta\Request object
      */
-    public function data(array $data, $override = false) {
+    public function data(array $data, $override = false)
+    {
         return $this->json($data, $override);
     }
 
@@ -198,7 +202,8 @@ class Request
      *
      * @return object          This Okta\Request object
      */
-    public function timeout($seconds) {
+    public function timeout($seconds)
+    {
         $this->option('timeout', $seconds);
         return $this;
     }
@@ -210,7 +215,8 @@ class Request
      *
      * @return object        This request object
      */
-    public function assoc($assoc) {
+    public function assoc($assoc)
+    {
         $this->assoc = $assoc;
         return $this;
     }
@@ -220,8 +226,8 @@ class Request
      *
      * @return object Decoded API response object
      */
-    public function send() {
-
+    public function send()
+    {
         $response = $this->client->request($this->method, $this->endpoint, $this->options);
 
         $bodyContents = $response->getBody()->getContents();
@@ -231,7 +237,5 @@ class Request
         }
 
         return json_decode($bodyContents, $this->assoc);
-
     }
-
 }

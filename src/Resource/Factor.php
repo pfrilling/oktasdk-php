@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class Factor extends Base
 {
-
     /**
      * Fetches a factor for the specified user.
      *
@@ -18,12 +17,11 @@ class Factor extends Base
      *
      * @return object      Factor object
      */
-    public function get($uid, $fid) {
-
+    public function get($uid, $fid)
+    {
         $request = $this->request->get('users/' . $uid . '/factors/' . $fid);
 
         return $request->send();
-
     }
 
     /**
@@ -33,12 +31,11 @@ class Factor extends Base
      *
      * @return array       Array of Factors
      */
-    public function listEnrolled($uid) {
-
+    public function listEnrolled($uid)
+    {
         $request = $this->request->get('users/' . $uid . '/factors');
 
         return $request->send();
-
     }
 
     /**
@@ -49,12 +46,11 @@ class Factor extends Base
      *
      * @return array       Array of Factors
      */
-    public function catalog($uid) {
-
+    public function catalog($uid)
+    {
         $request = $this->request->get('users/' . $uid . '/factors/catalog');
 
         return $request->send();
-
     }
 
     /**
@@ -64,7 +60,8 @@ class Factor extends Base
      *
      * @return array       Array of enrollable factors
      */
-    public function listEnrollable($uid) {
+    public function listEnrollable($uid)
+    {
         return $this->catalog($uid);
     }
 
@@ -75,12 +72,11 @@ class Factor extends Base
      *
      * @return array       Array of available security questions
      */
-    public function listSecurityQuestions($uid) {
-
+    public function listSecurityQuestions($uid)
+    {
         $request = $this->request->get('users/' . $uid . '/factors/questions');
 
         return $request->send();
-
     }
 
     /**
@@ -91,14 +87,13 @@ class Factor extends Base
      *
      * @return object         Enrolled Factor
      */
-    public function enroll($uid, array $factor) {
-
+    public function enroll($uid, array $factor)
+    {
         $request = $this->request->post('users/' . $uid . '/factors');
 
         $request->data($factor);
 
         return $request->send();
-
     }
 
     /**
@@ -108,13 +103,12 @@ class Factor extends Base
      *
      * @return object      Factor object
      */
-    public function enrollTotp($uid) {
-
+    public function enrollTotp($uid)
+    {
         return $this->enroll($uid, [
             'factorType' => 'token:software:totp',
             'provider'   => 'GOOGLE'
         ]);
-
     }
 
     /**
@@ -125,8 +119,8 @@ class Factor extends Base
      *
      * @return object              Factor object
      */
-    public function enrollSms($uid, $phoneNumber) {
-
+    public function enrollSms($uid, $phoneNumber)
+    {
         return $this->enroll($uid, [
             'factorType' => 'sms',
             'provider'   => 'OKTA',
@@ -134,7 +128,6 @@ class Factor extends Base
                 'phoneNumber' => $phoneNumber
             ]
         ]);
-
     }
 
     /**
@@ -146,14 +139,13 @@ class Factor extends Base
      *
      * @return object           Factor object
      */
-    public function activate($uid, $fid, $passCode) {
-
+    public function activate($uid, $fid, $passCode)
+    {
         $request = $this->request->post('users/' . $uid . '/factors/' . $fid . '/lifecycle/activate');
 
         $request->data(['passCode' => $passCode]);
 
         return $request->send();
-
     }
 
     /**
@@ -165,12 +157,11 @@ class Factor extends Base
      *
      * @return null        '204 No Content'
      */
-    public function reset($uid, $fid) {
-
+    public function reset($uid, $fid)
+    {
         $request = $this->request->delete('users/' . $uid . '/factors/' . $fid);
 
         return $request->send();
-
     }
 
     /**
@@ -184,14 +175,13 @@ class Factor extends Base
      *                              answer is invalid you will receive a 403
      *                              Forbidden status code.
      */
-    public function verify($uid, $fid, array $verification = null) {
-
+    public function verify($uid, $fid, array $verification = null)
+    {
         $request = $this->request->post('users/' . $uid . '/factors/' . $fid . '/verify');
 
         if (isset($verification)) $request->data($verification);
 
         return $request->send();
-
     }
 
     /**
@@ -205,7 +195,8 @@ class Factor extends Base
      *                          is invalid you will receive a 403 Forbidden
      *                          status code.
      */
-    public function verifyTotp($uid, $fid, $passCode) {
+    public function verifyTotp($uid, $fid, $passCode)
+    {
         return $this->verify($uid, $fic, ['passCode' => $passCode]);
     }
 
@@ -220,7 +211,8 @@ class Factor extends Base
      *                          is invalid you will receive a 403 Forbidden
      *                          status code.
      */
-    public function verifySMS($uid, $fid, $passCode) {
+    public function verifySMS($uid, $fid, $passCode)
+    {
         return $this->verify($uid, $fic, ['passCode' => $passCode]);
     }
 
@@ -234,12 +226,10 @@ class Factor extends Base
      *
      * @return object      Factor verification result object
      */
-    public function poll($uid, $fid, $tid) {
-
+    public function poll($uid, $fid, $tid)
+    {
         $request = $this->request->get('users/' . $uid . '/factors/' . $fid . '/transactions/' . $tid);
 
         return $request->send();
-
     }
-
 }

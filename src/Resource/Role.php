@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class Role extends Base
 {
-
     /**
      * Lists all roles assigned to a user.
      *
@@ -17,12 +16,11 @@ class Role extends Base
      *
      * @return array       Array of Roles
      */
-    public function listRoles($uid) {
-
+    public function listRoles($uid)
+    {
         $request = $this->request->get('users/' . $uid . '/roles');
 
         return $request->send();
-
     }
 
     /**
@@ -33,14 +31,13 @@ class Role extends Base
      *
      * @return object       Assigned Role
      */
-    public function assignRole($uid, $type) {
-
+    public function assignRole($uid, $type)
+    {
         $request = $this->request->post('users/' . $uid . '/roles');
 
         $request->data(['type' => $type]);
 
         return $request->send();
-
     }
 
     /**
@@ -51,12 +48,11 @@ class Role extends Base
      *
      * @return empty        HTTP/1.1 204 No Content
      */
-    public function unassignRole($uid, $rid) {
-
+    public function unassignRole($uid, $rid)
+    {
         $request = $this->request->delete('users/' . $uid . '/roles/' . $rid);
 
         return $request->send();
-
     }
 
     /**
@@ -70,15 +66,14 @@ class Role extends Base
      *
      * @return array         Array of Groups
      */
-    public function listUserAdminGroupTargets($uid, $rid, $limit = null, $after = null) {
-
+    public function listUserAdminGroupTargets($uid, $rid, $limit = null, $after = null)
+    {
         $request = $this->request->get('users/' . $uid . '/roles/' . $rid . '/targets/groups');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
-
     }
 
     /**
@@ -92,15 +87,13 @@ class Role extends Base
      *
      * @return array         Array of Catalog Apps
      */
-    public function listAppAdminAppTargets($uid, $rid, $limit = null, $after = null) {
-
+    public function listAppAdminAppTargets($uid, $rid, $limit = null, $after = null)
+    {
         $request = $this->request->get('users/' . $uid . '/roles/' . $rid . '/targets/catalog/apps');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
-
     }
-
 }
