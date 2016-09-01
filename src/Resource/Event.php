@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class Event extends Base
 {
-
     /**
      * Fetch a list of events from your Okta organization system log
      *
@@ -17,14 +16,12 @@ class Event extends Base
      *
      * @return array        Array of Events
      */
-    public function listEvents(array $query = null) {
-
+    public function listEvents(array $query = null)
+    {
         $request = $this->request->get('events');
 
         if (isset($query)) $request->query($query);
 
         return $request->send();
-
     }
-
 }

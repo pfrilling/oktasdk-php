@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class App extends Base
 {
-
     /**
      * Adds a new application to your Okta organization.
      *
@@ -22,8 +21,8 @@ class App extends Base
      *
      * @return object             Application object
      */
-    public function add($name, $label, $signOnMode, array $settings = null, $activate = null) {
-
+    public function add($name, $label, $signOnMode, array $settings = null, $activate = null)
+    {
         $request = $this->request->post('apps');
 
         $request->data([
@@ -36,7 +35,6 @@ class App extends Base
         if (isset($activate)) $request->query(['activate' => $activate]);
 
         return $request->send();
-
     }
 
     /**
@@ -46,12 +44,11 @@ class App extends Base
      *
      * @return object      Application object
      */
-    public function get($aid) {
-
+    public function get($aid)
+    {
         $request = $this->request->get('apps/' . $aid);
 
         return $request->send();
-
     }
 
     /**
@@ -62,14 +59,13 @@ class App extends Base
      *
      * @return array        Array of Application objects
      */
-    public function listApps(array $query = null) {
-
+    public function listApps(array $query = null)
+    {
         $request = $this->request->get('apps');
 
         if (isset($query)) $request->query($query);
 
         return $request->send();
-
     }
 
     /**
@@ -80,14 +76,13 @@ class App extends Base
      *
      * @return object      Application object
      */
-    public function update($aid, array $app) {
-
+    public function update($aid, array $app)
+    {
         $request = $this->request->put('apps/' . $aid);
 
         $request->data($app);
 
         return $request->send();
-
     }
 
     /**
@@ -98,12 +93,11 @@ class App extends Base
      *
      * @return object      An empty JSON object {}
      */
-    public function delete($aid) {
-
+    public function delete($aid)
+    {
         $request = $this->request->delete('apps/' . $aid);
 
         return $request->send();
-
     }
 
     /**
@@ -113,12 +107,11 @@ class App extends Base
      *
      * @return object      An empty JSON object {}
      */
-    public function activate($aid) {
-
+    public function activate($aid)
+    {
         $request = $this->request->post('apps/' . $aid . '/lifecycle/activate');
 
         return $request->send();
-
     }
 
     /**
@@ -128,12 +121,11 @@ class App extends Base
      *
      * @return object      An empty JSON object {}
      */
-    public function deactivate($aid) {
-
+    public function deactivate($aid)
+    {
         $request = $this->request->post('apps/' . $aid . '/lifecycle/deactivate');
 
         return $request->send();
-
     }
 
     /**
@@ -145,14 +137,13 @@ class App extends Base
      *
      * @return object          Application User object
      */
-    public function assignUser($aid, array $appuser) {
-
+    public function assignUser($aid, array $appuser)
+    {
         $request = $this->request->post('apps/' . $aid . '/users');
 
         $request->data($appuser);
 
         return $request->send();
-
     }
 
     /**
@@ -163,12 +154,11 @@ class App extends Base
      *
      * @return object      Application User
      */
-    public function getUser($aid, $uid) {
-
+    public function getUser($aid, $uid)
+    {
         $request = $this->request->get('apps/' . $aid . '/users/' . $uid);
 
         return $request->send();
-
     }
 
     /**
@@ -181,15 +171,14 @@ class App extends Base
      *
      * @return array        Array of Application Users
      */
-    public function listUsers($aid, $limit = null, $after = null) {
-
+    public function listUsers($aid, $limit = null, $after = null)
+    {
         $request = $this->request->get('apps/' . $aid . '/users');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
-
     }
 
     /**
@@ -202,14 +191,13 @@ class App extends Base
      *
      * @return object          Application User
      */
-    public function updateUser($aid, $uid, array $appuser) {
-
+    public function updateUser($aid, $uid, array $appuser)
+    {
         $request = $this->request->post('apps/' . $aid . '/users/' . $uid);
 
         $request->data($appuser);
 
         return $request->send();
-
     }
 
     /**
@@ -225,12 +213,11 @@ class App extends Base
      *
      * @return object      An empty object
      */
-    public function removeUser($aid, $uid) {
-
+    public function removeUser($aid, $uid)
+    {
         $request = $this->request->delete('apps/' . $aid . '/users/' . $uid);
 
         return $request->send();
-
     }
 
     /**
@@ -242,14 +229,13 @@ class App extends Base
      *
      * @return object           The assigned Application Group
      */
-    public function assignGroup($aid, $gid, array $appgroup) {
-
+    public function assignGroup($aid, $gid, array $appgroup)
+    {
         $request = $this->request->put('apps/' . $aid . '/groups/' . $gid);
 
         $request->data($appgroup);
 
         return $request->send();
-
     }
 
     /**
@@ -260,12 +246,11 @@ class App extends Base
      *
      * @return object      Application Group
      */
-    public function getGroup($aid, $gid) {
-
+    public function getGroup($aid, $gid)
+    {
         $request = $this->request->get('apps/' . $aid . '/groups/' . $gid);
 
         return $request->send();
-
     }
 
     /**
@@ -275,12 +260,11 @@ class App extends Base
      *
      * @return array       Array of Application Groups
      */
-    public function listGroups($aid) {
-
+    public function listGroups($aid)
+    {
         $request = $this->request->get('apps/' . $aid . '/groups');
 
         return $request->send();
-
     }
 
     /**
@@ -291,12 +275,11 @@ class App extends Base
      *
      * @return object      An empty JSON object {}
      */
-    public function removeGroup($aid, $gid) {
-
+    public function removeGroup($aid, $gid)
+    {
         $request = $this->request->delete('apps/' . $aid . '/groups/' . $gid);
 
         return $request->send();
-
     }
 
     /**
@@ -307,14 +290,13 @@ class App extends Base
      *
      * @return object                The generated Application Key Credential
      */
-    public function generateKey($aid, $validityYears)  {
-
+    public function generateKey($aid, $validityYears)
+    {
         $request = $this->request->post('apps/' . $aid . '/credentials/keys/generate');
 
         $request->query(['validityYears' => $validityYears]);
 
         return $request->send();
-
     }
 
     /**
@@ -324,12 +306,11 @@ class App extends Base
      *
      * @return array       Array of Application Key Credentials
      */
-    public function listKeys($aid) {
-
+    public function listKeys($aid)
+    {
         $request = $this->request->get('apps/' . $aid . '/credentials/keys');
 
         return $request->send();
-
     }
 
     /**
@@ -340,12 +321,11 @@ class App extends Base
      *
      * @return object      Application Key Credential
      */
-    public function getKey($aid, $kid) {
-
+    public function getKey($aid, $kid)
+    {
         $request = $this->request->get('apps/' . $aid . '/credentials/keys/' . $kid);
 
         return $request->send();
-
     }
 
     /**
@@ -357,14 +337,12 @@ class App extends Base
      *
      * @return string      SAML metadata in XML
      */
-    public function getSaml($aid, $kid) {
-
+    public function getSaml($aid, $kid)
+    {
         $request = $this->request->get('apps/' . $aid . '/sso/saml/metadata');
 
         $request->query(['kid' => $kid]);
 
         return $request->send();
-
     }
-
 }

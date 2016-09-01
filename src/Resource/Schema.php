@@ -9,18 +9,16 @@ namespace Okta\Resource;
  */
 class Schema extends Base
 {
-
     /**
      * Fetches the default schema for a User
      *
      * @return object User Schema
      */
-    public function getUser() {
-
+    public function getUser()
+    {
         $request = $this->request->get('meta/schemas/user/default');
 
         return $request->send();
-
     }
 
     /**
@@ -35,14 +33,12 @@ class Schema extends Base
      *
      * @return obeject           User Schema
      */
-    public function userProperty(array $definitions) {
-
+    public function userProperty(array $definitions)
+    {
         $request = $this->request->post('meta/schemas/user/default');
 
         $request->data(['definitions' => $definitions]);
 
         return $request->send();
-
     }
-
 }

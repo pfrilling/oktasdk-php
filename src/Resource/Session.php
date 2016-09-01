@@ -9,7 +9,6 @@ namespace Okta\Resource;
  */
 class Session extends Base
 {
-
     /**
      * Creates a new session for a user with a valid session token. Only use
      * this operation if you need the session id, otherwise you should use one
@@ -25,8 +24,8 @@ class Session extends Base
      *                                  sessionToken will return a 401
      *                                  Unauthorized status code.
      */
-    public function create($sessionToken, $additionalFields = null) {
-
+    public function create($sessionToken, $additionalFields = null)
+    {
         $request = $this->request->post('sessions');
 
         $request->data(['sessionToken' => $sessionToken]);
@@ -34,7 +33,6 @@ class Session extends Base
         if (isset($additionalFields)) $request->query(['additionalFields' => $additionalFields]);
 
         return $request->send();
-
     }
 
     /**
@@ -44,12 +42,11 @@ class Session extends Base
      * @return empty      Invalid sessions will return a 404 Not Found status
      *                    code.
      */
-    public function extend($id) {
-
+    public function extend($id)
+    {
         $request = $this->request->put('sessions/' . $id);
 
         return $request->send();
-
     }
 
     /**
@@ -60,12 +57,10 @@ class Session extends Base
      * @return empty      Invalid sessions will return a 404 Not Found status
      *                    code.
      */
-    public function close($id) {
-
+    public function close($id)
+    {
         $request = $this->request->delete('sessions/' . $id);
 
         return $request->send();
-
     }
-
 }

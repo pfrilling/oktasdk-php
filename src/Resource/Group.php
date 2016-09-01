@@ -17,14 +17,13 @@ class Group extends Base
      *
      * @return object         The created Group object
      */
-    public function add(array $profile) {
-
+    public function add(array $profile)
+    {
         $request = $this->request->post('groups');
 
         $request->data(['profile' => $profile]);
 
         return $request->send();
-
     }
 
     /**
@@ -34,12 +33,11 @@ class Group extends Base
      *
      * @return object      Group object
      */
-    public function get($gid) {
-
+    public function get($gid)
+    {
         $request = $this->request->get('groups/' . $gid);
 
         return $request->send();
-
     }
 
     /**
@@ -50,14 +48,13 @@ class Group extends Base
      *
      * @return array        Array of Group objects
      */
-    public function listGroups(array $query = null) {
-
+    public function listGroups(array $query = null)
+    {
         $request = $this->request->get('groups');
 
         if (isset($query)) $request->query($query);
 
         return $request->send();
-
     }
 
     /**
@@ -70,14 +67,13 @@ class Group extends Base
      *
      * @return object          Updated Group
      */
-    public function update($gid, array $profile) {
-
+    public function update($gid, array $profile)
+    {
         $request = $this->request->put('groups/' . $gid);
 
         $request->data(['profile' => $profile]);
 
         return $request->send();
-
     }
 
     /**
@@ -88,12 +84,11 @@ class Group extends Base
      *
      * @return object      Empty object
      */
-    public function remove($gid) {
-
+    public function remove($gid)
+    {
         $request = $this->request->delete('groups/' . $gid);
 
         return $request->send();
-
     }
 
     /**
@@ -106,15 +101,14 @@ class Group extends Base
      *
      * @return array         Array of Users
      */
-    public function listMembers($gid, $limit = null, $after = null) {
-
+    public function listMembers($gid, $limit = null, $after = null)
+    {
         $request = $this->request->get('groups/' . $gid . '/users');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
-
     }
 
     /**
@@ -126,12 +120,11 @@ class Group extends Base
      *
      * @return object      Empty object
      */
-    public function addUser($gid, $uid) {
-
+    public function addUser($gid, $uid)
+    {
         $request = $this->request->put('groups/' . $gid . '/users/' . $uid);
 
         return $request->send();
-
     }
 
     /**
@@ -143,12 +136,11 @@ class Group extends Base
      *
      * @return object      Empty object
      */
-    public function removeUser($gid, $uid) {
-
+    public function removeUser($gid, $uid)
+    {
         $request = $this->request->delete('groups/' . $gid . '/users/' . $uid);
 
         return $request->send();
-
     }
 
     /**
@@ -162,15 +154,13 @@ class Group extends Base
      *
      * @return array         Array of Applications
      */
-    public function listApps($gid, $limit = null, $after = null) {
-
+    public function listApps($gid, $limit = null, $after = null)
+    {
         $request = $this->request->get('groups/' . $gid . '/apps');
 
         if (isset($limit)) $request->query(['limit' => $limit]);
         if (isset($after)) $request->query(['after' => $after]);
 
         return $request->send();
-
     }
-
 }
