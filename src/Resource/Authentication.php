@@ -316,7 +316,10 @@ class Authentication extends Base
     {
         $request = $this->request->post('authn/recovery/answer');
 
-        $request->data(['answer' => $answer]);
+        $request->data([
+            'stateToken' => $stateToken,
+            'answer'     => $answer
+        ]);
 
         return $request->send();
     }
