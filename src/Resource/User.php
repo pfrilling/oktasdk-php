@@ -237,7 +237,7 @@ class User extends Base
      *                           sendEmail is false, returns a link for the user
      *                           to reset their password.
      */
-    public function resetPassword($uid, $sendEmail)
+    public function resetPassword($uid, $sendEmail = null)
     {
         $request = $this->request->post('users/' . $uid . '/lifecycle/reset_password');
 
