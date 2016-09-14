@@ -197,7 +197,7 @@ class Factor extends Base
      */
     public function verifyTotp($uid, $fid, $passCode)
     {
-        return $this->verify($uid, $fic, ['passCode' => $passCode]);
+        return $this->verify($uid, $fid, ['passCode' => $passCode]);
     }
 
     /**
@@ -213,7 +213,7 @@ class Factor extends Base
      */
     public function verifySMS($uid, $fid, $passCode)
     {
-        return $this->verify($uid, $fic, ['passCode' => $passCode]);
+        return $this->verify($uid, $fid, ['passCode' => $passCode]);
     }
 
     /**
