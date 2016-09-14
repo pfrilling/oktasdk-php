@@ -211,7 +211,7 @@ class Factor extends Base
      *                          is invalid you will receive a 403 Forbidden
      *                          status code.
      */
-    public function verifySMS($uid, $fid, $passCode)
+    public function verifySms($uid, $fid, $passCode)
     {
         return $this->verify($uid, $fid, ['passCode' => $passCode]);
     }
