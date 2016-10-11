@@ -87,16 +87,17 @@ class Authentication extends Base
      *
      * @return object             Authentication Transaction Object
      */
-    public function enrollFactor($stateToken, $factorType, $provider, array $profile)
+    public function enrollFactor($stateToken, $factorType, $provider, array $profile = null)
     {
         $request = $this->request->post('authn/factors');
 
         $request->data([
             'stateToken' => $stateToken,
             'factorType' => $factorType,
-            'provider'   => $provider,
-            'profile'    => $profile
+            'provider'   => $provider
         ]);
+
+        if (isset($profile)) $request->data(['profile' => $profile]);
 
         return $request->send();
     }
