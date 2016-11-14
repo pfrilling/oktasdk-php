@@ -84,10 +84,11 @@ class Authentication extends Base
      * @param  string $provider   Factor provider
      * @param  array  $profile    Associative array containing profile
      *                            key/values of a supported factor
+     * @param  array  $query      Array of query parameters/values
      *
      * @return object             Authentication Transaction Object
      */
-    public function enrollFactor($stateToken, $factorType, $provider, array $profile = null)
+    public function enrollFactor($stateToken, $factorType, $provider, array $profile = null, array $query = null)
     {
         $request = $this->request->post('authn/factors');
 
@@ -98,6 +99,7 @@ class Authentication extends Base
         ]);
 
         if (isset($profile)) $request->data(['profile' => $profile]);
+        if (isset($query))   $request->query($query);
 
         return $request->send();
     }
