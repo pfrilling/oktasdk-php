@@ -84,14 +84,17 @@ class Factor extends Base
      *
      * @param  string $uid    ID of user
      * @param  array  $factor Array of factor properties
+     * @param  array  $query  Array of query parameters/values
      *
      * @return object         Enrolled Factor
      */
-    public function enroll($uid, array $factor)
+    public function enroll($uid, array $factor, array $query = null)
     {
         $request = $this->request->post('users/' . $uid . '/factors');
 
         $request->data($factor);
+
+        if (isset($query)) $request->query($query);
 
         return $request->send();
     }
