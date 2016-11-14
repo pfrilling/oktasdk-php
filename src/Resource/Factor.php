@@ -119,18 +119,21 @@ class Factor extends Base
      *
      * @param  string $uid         User ID
      * @param  string $phoneNumber Phone number
+     * @param  bool   $update      Update existing phone number when true
      *
      * @return object              Factor object
      */
-    public function enrollSms($uid, $phoneNumber)
+    public function enrollSms($uid, $phoneNumber, $update = false)
     {
         return $this->enroll($uid, [
-            'factorType' => 'sms',
-            'provider'   => 'OKTA',
-            'profile'    => [
-                'phoneNumber' => $phoneNumber
-            ]
-        ]);
+                'factorType' => 'sms',
+                'provider'   => 'OKTA',
+                'profile'    => [
+                    'phoneNumber' => $phoneNumber
+                ]
+            ],
+            $update ? ['updatePhone' => true] : null
+        );
     }
 
     /**
