@@ -15,14 +15,18 @@ class Exception extends \Exception
     /**
      * OKta\Exception constructor method
      *
-     * @param string     $message  The internal exception message
-     * @param \Exception $previous The previous exception
-     * @param int        $code     The internal exception code
+     * @param string  $message  The internal exception message
+     * @param Exception  $previous  The previous exception
+     * @param int  $code  The internal exception code
      */
     public function __construct($responseObject, Exception $previous = null, $code = 0)
     {
         parent::__construct('', $code, $previous);
         $this->responseObject = $responseObject;
+
+        if (isset($responseObject->errorSummary)) {
+            $this->message = $responseObject->errorSummary;
+        }
     }
 
     /**
