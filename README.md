@@ -1,10 +1,10 @@
 OktaSDK-PHP
 ===========
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/iodatacenters/oktasdk.svg)](https://packagist.org/packages/iodatacenters/oktasdk)
-[![Total Downloads](https://img.shields.io/packagist/dt/iodatacenters/oktasdk.svg)](https://packagist.org/packages/iodatacenters/oktasdk)
-[![License](https://img.shields.io/packagist/l/iodatacenters/oktasdk.svg)](https://packagist.org/packages/iodatacenters/oktasdk)
-[![Build Status](https://img.shields.io/travis/iodatacenters/oktasdk-php.svg)](https://travis-ci.org/iodatacenters/oktasdk-php)
+[![Latest Stable Version](https://img.shields.io/packagist/v/dakkusingh/oktasdk.svg)](https://packagist.org/packages/dakkusingh/oktasdk)
+[![Total Downloads](https://img.shields.io/packagist/dt/dakkusingh/oktasdk.svg)](https://packagist.org/packages/dakkusingh/oktasdk)
+[![License](https://img.shields.io/packagist/l/dakkusingh/oktasdk.svg)](https://packagist.org/packages/dakkusingh/oktasdk)
+[![Build Status](https://img.shields.io/travis/dakkusingh/oktasdk-php.svg)](https://travis-ci.org/dakkusingh/oktasdk-php)
 
 PHP client library for the Okta API (v1)
 
@@ -15,7 +15,7 @@ Install with Composer
 ---------------------
 
 ```bash
-composer require iodatacenters/oktasdk
+composer require dakkusingh/oktasdk
 ```
 
 Initializing the Client
@@ -89,7 +89,7 @@ See documentation for available exception methods.
 Contributing
 ------------
 
-  1. Fork [the repository](https://github.com/iodatacenters/oktasdk-php)
+  1. Fork [the repository](https://github.com/dakkusingh/oktasdk-php)
 
   2. Clone your fork:
 
@@ -119,11 +119,11 @@ Contributing
      git push origin descriptive-branch-name
      ```
 
-  7. [Open a Pull Request](https://github.com/iodatacenters/oktasdk-php/pull/new)
+  7. [Open a Pull Request](https://github.com/dakkusingh/oktasdk-php/pull/new)
      on GitHub.
 
 
 Copyright
 ---------
 
-This project is liscensed under the [MIT License](https://github.com/iodatacenters/oktasdk-php/blob/master/LICENSE).
+This project is liscensed under the [MIT License](https://github.com/dakkusingh/oktasdk-php/blob/master/LICENSE).
