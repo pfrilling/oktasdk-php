@@ -381,4 +381,22 @@ class User extends Base
 
         return $request->send();
     }
+
+    /**
+     * Permanently delete a user.
+     *
+     * The user must have a status of 'DEPROVISIONED', for this to succeed.
+     *
+     * @param string $uid
+     *   An Okta user ID.
+     *
+     * @return object
+     *   Decoded API response object.
+     */
+    public function delete($uid)
+    {
+        $request = $this->request->delete('users/' . $uid);
+
+        return $request->send();
+    }
 }
