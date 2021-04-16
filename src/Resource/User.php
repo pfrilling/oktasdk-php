@@ -13,15 +13,15 @@ class User extends Base
      * Creates a new user in your Okta organization with or without credentials.
      *
      * @param  array   $profile     Array of user profile properties
-     * @param  array   $groupIds    Array of group ID's to assign the user on creation.
      * @param  array   $credentials Array of user credentials
      * @param  array   $provider    Array of authentication provider properties
      * @param  boolean $activate    Weather or not to execute activation
      *                              lifecycle operation when creating the user
+     * @param  array   $groupIds    Array of group ID's to assign the user on creation.
      *
      * @return object               User model object
      */
-    public function create(array $profile, array $groupIds = null, array $credentials = null, array $provider = null, $activate = null)
+    public function create(array $profile, array $credentials = null, array $provider = null, $activate = null, array $groupIds = null)
     {
         $request = $this->request->post('users');
 
