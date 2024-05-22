@@ -228,7 +228,16 @@ class Request
      */
     public function send()
     {
+      try {
         $response = $this->client->request($this->method, $this->endpoint, $this->options);
+      }
+      catch (\Exception $e) {
+        // Guzzle >= 7 throws GuzzleHttp\Exception\ClientException.
+        // Need to catch this exception and throw Okta\Exception instead.
+        throw new Okta\Exception(json_decode($e));
+      }
+
+
 
         $bodyContents = $response->getBody()->getContents();
 
